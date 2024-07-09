@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="85bcce74-7db6-4ed3-8867-3cbab6be5d7a" name="Changes" comment="chore: add image of idea">
+      <change afterPath="$PROJECT_DIR$/svlc/docs/kubernetes.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/Messages.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/results/Success.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/docs/podman.md" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/docs/podman.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/helms/ChartYaml.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helms/Charts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/helms/Templates.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helms/Templates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/helms/ValuesYaml.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helms/Values.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/helms/Yaml.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helms/Yaml.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/kubernetes/Kubernetes.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/kubernetes/Kubernetes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/pod/Podman.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/Podman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/pod/PodmanCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/cmd/PodmanCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/pod/PodmanHttp.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/http/PodmanHttp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/RunProc.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/results/RunProc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/auth/AuthHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/auth/AuthHeader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/cli/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/cli/CLI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/cli/CommandsList.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/cli/CommandsList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/controllers/cmd/CmdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/controllers/CmdController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/controllers/cmd/CmdExec.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/cmd/CmdExec.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/controllers/cmd/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/cmd/Commands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/controllers/http/HttpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/controllers/HttpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/controllers/http/HttpReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/http/HttpReq.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/controllers/http/Requests.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/http/Requests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/results/Errors.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/results/Errors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/results/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/results/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/results/Success.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/main/java/com/example/helloworld/HelloWorldApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/main/java/com/example/helloworld/controller/HelloWorldController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/main/java/com/testing/HelloWorldApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/main/java/com/testing/HelloWorldController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/main/resources/application-dev.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/test/java/com/example/helloworld/HelloWorldApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/test/java/com/example/helloworld/controller/HelloWorldControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/test/java/com/testing/HelloWorldControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/test/java/com/testing/HelloWorldIntegrationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/Containerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/jib-test/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/jib-test/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/jib-test/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/jib-test/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/jib-test/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/jib-test/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/jib-test/src/main/java/org/example/HelloWorld.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/jib-test/src/main/resources/world" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/jib-test/testPod.yaml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;daniel-m-carvalho&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/daniel-m-carvalho/SVLC-Final_Project.git&quot;,
+    &quot;accountId&quot;: &quot;8d456d8f-fa5b-4912-8c08-673a5a3afe39&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2iThn1zX8OwpuHwwwM3SJiLYp4C" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Daniel/Faculdade/Ano_3/Semestre_6/PS/Project/SVLC-Final_Project/svlc",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "configurable.group.build",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\SVLC-Final_Project\assets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\SVLC-Final_Project\demo" />
+      <recent name="C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\SVLC-Final_Project" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="85bcce74-7db6-4ed3-8867-3cbab6be5d7a" name="Changes" comment="" />
+      <created>1719520637646</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1719520637646</updated>
+      <workItem from="1719520638720" duration="28000" />
+      <workItem from="1720052811663" duration="997000" />
+      <workItem from="1720141629796" duration="193000" />
+      <workItem from="1720190654202" duration="2981000" />
+      <workItem from="1720389418886" duration="10957000" />
+      <workItem from="1720402411835" duration="1222000" />
+      <workItem from="1720482186660" duration="537000" />
+    </task>
+    <task id="LOCAL-00001" summary="docs: start documentation for mechanisms and creation of .gitignore file">
+      <option name="closed" value="true" />
+      <created>1720053105007</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1720053105007</updated>
+    </task>
+    <task id="LOCAL-00002" summary="refactor: change the mechanisms classes directories, improve the previous code and add more methods to both http and cmd Podman CLI communication. Also do a restructure to the Yaml classes.">
+      <option name="closed" value="true" />
+      <created>1720053539617</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1720053539617</updated>
+    </task>
+    <task id="LOCAL-00003" summary="chore: add dependencies to pom.xml and consequential changes">
+      <option name="closed" value="true" />
+      <created>1720053769406</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1720053769406</updated>
+    </task>
+    <task id="LOCAL-00004" summary="chore: change the pom.xml and consequential changes.&#10;write repository README.md.">
+      <option name="closed" value="true" />
+      <created>1720396444702</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1720396444702</updated>
+    </task>
+    <task id="LOCAL-00005" summary="chore: add image of idea">
+      <option name="closed" value="true" />
+      <created>1720396505894</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1720396505894</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="docs: start documentation for mechanisms and creation of .gitignore file" />
+    <MESSAGE value="refactor: change the mechanisms classes directories, improve the previous code and add more methods to both http and cmd Podman CLI communication. Also do a restructure to the Yaml classes." />
+    <MESSAGE value="chore: add dependencies to pom.xml and consequential changes" />
+    <MESSAGE value="chore: change the pom.xml and consequential changes.&#10;write repository README.md." />
+    <MESSAGE value="chore: add image of idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: add image of idea" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

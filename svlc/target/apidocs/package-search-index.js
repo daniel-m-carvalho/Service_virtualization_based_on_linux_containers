@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"pt.isel.leic.svlc.helms"},{"l":"pt.isel.leic.svlc.kubernetes"},{"l":"pt.isel.leic.svlc.pod"},{"l":"pt.isel.leic.svlc.pod.cmd"},{"l":"pt.isel.leic.svlc.pod.http"},{"l":"pt.isel.leic.svlc.util.auth"},{"l":"pt.isel.leic.svlc.util.results"}];updateSearchResults();
