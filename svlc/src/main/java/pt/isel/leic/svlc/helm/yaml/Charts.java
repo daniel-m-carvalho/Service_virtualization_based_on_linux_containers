@@ -1,14 +1,15 @@
-package pt.isel.leic.svlc.helms;
+package pt.isel.leic.svlc.helm.yaml;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
  /**
- * This class provides methods to convert chart information into YAML format.
+ * This class represents the metadata of a Helm chart.
+ * It is used to store the metadata of a Helm chart in a map.
  */
 
-public class Charts extends Yaml {
+public class Charts extends YamlConverter {
     private final String apiVersion = "v2";
     private String name;
     private String description;
@@ -27,18 +28,23 @@ public class Charts extends Yaml {
 
      /**
       * Constructs a Charts object with specified metadata and configuration.
+      * @param name The name of the Helm chart.
       * @param description A short description of the chart.
       * @param version The version of the chart.
-      * @param name The name of the Helm chart.
       * @param appVersion The version of the app this chart installs.
-      * @param description A short description of the Helm chart.
       * @param keywords A list of keywords associated with the chart.
-      * @param version The version of the Helm chart.
-      * @param appVersion The version of the application packaged in the Helm chart.
       * @param sources The source URLs of the chart.
       * @param maintainers A list of maintainers of the chart.
       */
-    public Charts(String name, String description, String version, String appVersion, List<String> keywords, Map<String, String> sources, List<String> maintainers) {
+    public Charts(
+            String name,
+            String description,
+            String version,
+            String appVersion,
+            List<String> keywords,
+            Map<String, String> sources,
+            List<String> maintainers
+    ) {
         this.name = name;
         this.description = description;
         this.version = version;
@@ -51,9 +57,9 @@ public class Charts extends Yaml {
      /**
       * Converts the chart information to YAML format.
       *
-      * @return A string representation of the chart in YAML format.
+      * @return A map containing the chart information.
       */
-    public String toYaml() {
+    public Map<String, Object> generateChart() {
         Map<String, Object> map = new HashMap<>();
         map.put("apiVersion", apiVersion);
         map.put("name", name);
@@ -68,7 +74,7 @@ public class Charts extends Yaml {
         map.put("dependencies", dependencies);
         map.put("type", type);
         map.put("annotations", annotations);
-        return toYaml(map);
+        return map;
     }
 
     public String getApiVersion() {

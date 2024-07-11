@@ -2,7 +2,7 @@ package pt.isel.leic.svlc.pod.http;
 
 import pt.isel.leic.svlc.pod.Podman;
 import pt.isel.leic.svlc.util.results.Result;
-import pt.isel.leic.svlc.util.results.Errors;
+import pt.isel.leic.svlc.util.results.Failure;
 import pt.isel.leic.svlc.util.results.Success;
 
 import java.util.Map;
@@ -48,11 +48,11 @@ public class PodmanHttp implements Podman {
      * @param queryString Query parameters for the request.
      * @return Either an error or a success message wrapped in an {@link Result} object.
      */
-    private Result<Errors, Success<String>> exec(String method, String url, String payload, Map<String, String> queryString, String authInfo) {
+    private Result<Failure, Success<String>> exec(String method, String url, String payload, Map<String, String> queryString, String authInfo) {
         try {
             return Right(new Success<String>(HttpReq.executeRequest(method, url, payload, queryString, authInfo)));
         } catch (Exception e) {
-            return Left(new Errors("Failed to deploy. " + e.getMessage()));
+            return Left(new Failure("Failed to deploy. " + e.getMessage()));
         }
     }
 
@@ -80,7 +80,7 @@ public class PodmanHttp implements Podman {
      * @return Either an error or a success message wrapped in an {@link Result} object.
      */
     @Override
-    public Result<Errors, Success<String>> createContainer() {
+    public Result<Failure, Success<String>> createContainer() {
         return exec("POST", createContainerHTTP(), payload, null, null);
     }
 
@@ -90,7 +90,7 @@ public class PodmanHttp implements Podman {
      * @return Either an error or a success message wrapped in an {@link Result} object.
      */
     @Override
-    public Result<Errors, Success<String>> startPod() {
+    public Result<Failure, Success<String>> startPod() {
         return exec("POST", startPodHTTP(podName), HttpReq.defaultPayload, null, null);
     }
 
@@ -100,7 +100,7 @@ public class PodmanHttp implements Podman {
      * @return Either an error or a success message wrapped in an {@link Result} object.
      */
     @Override
-    public Result<Errors, Success<String>> stopPod() {
+    public Result<Failure, Success<String>> stopPod() {
         return exec("POST", stopPodHTTP(podName), HttpReq.defaultPayload, null, null);
     }
 
@@ -110,7 +110,7 @@ public class PodmanHttp implements Podman {
      * @return Either an error or a success message wrapped in an {@link Result} object.
      */
     @Override
-    public Result<Errors, Success<String>> prunePods() {
+    public Result<Failure, Success<String>> prunePods() {
         return exec("POST", prunePodsHTTP(), HttpReq.defaultPayload, null, null);
     }
 
@@ -120,7 +120,7 @@ public class PodmanHttp implements Podman {
      * @return Either an error or a success message wrapped in an {@link Result} object.
      */
     @Override
-    public Result<Errors, Success<String>> getPodStatistics() {
+    public Result<Failure, Success<String>> getPodStatistics() {
         return exec("GET", statisticsPodHTTP(), HttpReq.defaultPayload, null, null);
     }
 
@@ -130,7 +130,7 @@ public class PodmanHttp implements Podman {
      * @return Either an error or a success message wrapped in an {@link Result} object.
      */
     @Override
-    public Result<Errors, Success<String>> createPod() {
+    public Result<Failure, Success<String>> createPod() {
         return exec("POST", createPodHTTP(), payload, null, null);
     }
 
@@ -140,7 +140,7 @@ public class PodmanHttp implements Podman {
      * @return Either an error or a success message wrapped in an {@link Result} object.
      */
     @Override
-    public Result<Errors, Success<String>> pullImage() {
+    public Result<Failure, Success<String>> pullImage() {
         if (image.split("/").length == 1) {
             return Right(new Success<String>(IMAGE_EXISTS_ASSUMPTION));
         }
@@ -153,7 +153,7 @@ public class PodmanHttp implements Podman {
      * @return Either an error or a success message wrapped in an {@link Result} object.
      */
     @Override
-    public Result<Errors, Success<String>> deleteImage() {
+    public Result<Failure, Success<String>> deleteImage() {
         return exec("DELETE", deleteImageHTTP(image), HttpReq.defaultPayload, null, null);
     }
 }

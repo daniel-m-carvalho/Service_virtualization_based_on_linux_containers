@@ -73,15 +73,25 @@ public record Result<L, R>(L left, R right) {
     /**
      * Executes a given runner if the operation succeeded.
      *
-     * @param runProc The runner to be executed.
+     * @param resultProc The runner to be executed.
      * @return The result of the runner if the operation succeeded.
      * @throws RuntimeException If the operation failed.
      */
-    public Result<L, R> then(RunProc<L, R> runProc) throws RuntimeException {
-        if (success() && runProc != null) {
-            return runProc.run();
+    public Result<L, R> then(ResultProc<L, R> resultProc) throws RuntimeException {
+        if (success() && resultProc != null) {
+            return resultProc.run();
         }
         throw new RuntimeException(left.toString());
+    }
+
+    /**
+     * Prints the success (right) value of the Either object.
+     * If the operation failed, it does nothing.
+     * @return The Result object.
+     */
+    public Result<L, R> print() {
+        if (success()) System.out.println(right);
+        return this;
     }
 
     /**

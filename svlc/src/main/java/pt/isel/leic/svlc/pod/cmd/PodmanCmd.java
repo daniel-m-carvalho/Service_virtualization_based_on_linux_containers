@@ -2,7 +2,7 @@ package pt.isel.leic.svlc.pod.cmd;
 
 import pt.isel.leic.svlc.pod.Podman;
 import pt.isel.leic.svlc.util.results.Result;
-import pt.isel.leic.svlc.util.results.Errors;
+import pt.isel.leic.svlc.util.results.Failure;
 import pt.isel.leic.svlc.util.results.Success;
 
 import static pt.isel.leic.svlc.pod.Messages.*;
@@ -42,84 +42,84 @@ public class PodmanCmd implements Podman {
      *
      * @param cmd The Podman command to be executed as an array of {@link String}.
      * @param successMessage The success message to be returned if the command is successful.
-     * @return An {@link Result} containing an {@link Errors} object in case of failure, or a success message as {@link String} in case of success.
+     * @return An {@link Result} containing an {@link Failure} object in case of failure, or a success message as {@link String} in case of success.
      */
-    private static Result<Errors, Success<String>> exec(String [] cmd, String successMessage, boolean wait){
+    private static Result<Failure, Success<String>> exec(String [] cmd, String successMessage, boolean wait){
         try {
             return Right(new Success<String>(CmdExec.executeCommand(cmd, successMessage, wait)));
         } catch (Exception e) {
-            return Left(new Errors(e.getMessage()));
+            return Left(new Failure(e.getMessage()));
         }
     }
 
     /**
      * Deploys a container within a pod using the 'podman run' command.
      *
-     * @return An {@link Result} containing an {@link Errors} object if the deployment failed, or a success message if the deployment succeeded.
+     * @return An {@link Result} containing an {@link Failure} object if the deployment failed, or a success message if the deployment succeeded.
      */
-    public Result<Errors, Success<String>> deployInPod() {
+    public Result<Failure, Success<String>> deployInPod() {
         return exec(Commands.deployInPodCMD(podName, image), DEPLOY_IN_POD_SUCCESS ,true);
     }
 
     /**
      * Creates a pod using the 'podman pod create' command.
      *
-     * @return An {@link Result} containing an {@link Errors} object if the creation failed, or a success message if the creation succeeded.
+     * @return An {@link Result} containing an {@link Failure} object if the creation failed, or a success message if the creation succeeded.
      */
-    public Result<Errors, Success<String>> createPod(){
+    public Result<Failure, Success<String>> createPod(){
         return exec(Commands.createPodCMD(podName, ports), CREATE_POD_SUCCESS,true);
     }
 
     /**
      * Starts a pod using the 'podman pod start' command.
      *
-     * @return An {@link Result} containing an {@link Errors} object if starting the pod failed, or a success message if the pod was started successfully.
+     * @return An {@link Result} containing an {@link Failure} object if starting the pod failed, or a success message if the pod was started successfully.
      */
     @Override
-    public Result<Errors, Success<String>> startPod() {
+    public Result<Failure, Success<String>> startPod() {
         return exec(Commands.startPodCMD(podName), START_POD_SUCCESS,true);
     }
 
     /**
      * Stops a pod using the 'podman pod stop' command.
      *
-     * @return An {@link Result} containing an {@link Errors} object if stopping the pod failed, or a success message if the pod was stopped successfully.
+     * @return An {@link Result} containing an {@link Failure} object if stopping the pod failed, or a success message if the pod was stopped successfully.
      */
     @Override
-    public Result<Errors, Success<String>> stopPod() {
+    public Result<Failure, Success<String>> stopPod() {
         return exec(Commands.stopPodCMD(podName), STOP_POD_SUCCESS,true);
     }
 
     /**
      * Prunes (removes) stopped pods using the 'podman pod prune' command.
      *
-     * @return An {@link Result} containing an {@link Errors} object if
+     * @return An {@link Result} containing an {@link Failure} object if
      * pruning the pods failed, or a success message if the pods were pruned successfully.
      */
     @Override
-    public Result<Errors, Success<String>> prunePods() {
+    public Result<Failure, Success<String>> prunePods() {
         return exec(Commands.prunePodsCMD(), PRUNE_PODS_SUCCESS,true);
     }
 
     /**
      * Gets statistics for the pods using the 'podman pod stats' command.
      *
-     * @return An {@link Result} containing an {@link Errors} object if getting the statistics failed,
+     * @return An {@link Result} containing an {@link Failure} object if getting the statistics failed,
      * or the statistics as a {@link String} if successful.
      * */
     @Override
-    public Result<Errors, Success<String>> getPodStatistics() {
+    public Result<Failure, Success<String>> getPodStatistics() {
         return exec(Commands.getPodStatisticsCMD(podName), GET_POD_STATISTICS_SUCCESS,true);
     }
 
     /**
      * Creates a container using the 'podman create' command.
      *
-     * @return An {@link Result} containing an {@link Errors} object if the creation failed,
+     * @return An {@link Result} containing an {@link Failure} object if the creation failed,
      * or a success message if the creation succeeded.
      */
     @Override
-    public Result<Errors, Success<String>> createContainer() {
+    public Result<Failure, Success<String>> createContainer() {
         return exec(Commands.createContainerCMD(image), CREATE_CONTAINER_SUCCESS,true);
     }
 
@@ -127,11 +127,11 @@ public class PodmanCmd implements Podman {
      * Pulls an image using the 'podman pull' command.
      * If the image already exists, it does not pull the image.
      *
-     * @return An {@link Result} containing an {@link Errors} object if the pull failed,
+     * @return An {@link Result} containing an {@link Failure} object if the pull failed,
      * or a success message if the image was pulled successfully.
      */
-    public Result<Errors, Success<String>> pullImage() {
-        Result<Errors, Success<String>> imageExists = exec(Commands.checkImageCMD(image), EMPTY,true);
+    public Result<Failure, Success<String>> pullImage() {
+        Result<Failure, Success<String>> imageExists = exec(Commands.checkImageCMD(image), EMPTY,true);
         if (imageExists.success() && imageExists.right().value().isEmpty()){
             return exec(Commands.pullImageCMD(image), PULL_IMAGE_SUCCESS,true);
         } else {
@@ -142,15 +142,15 @@ public class PodmanCmd implements Podman {
     /**
      * Deletes an image using the 'podman image rm' command.
      *
-     * @return An {@link Result} containing an {@link Errors} object if the deletion failed,
+     * @return An {@link Result} containing an {@link Failure} object if the deletion failed,
      * or a success message if the image was deleted successfully.
      */
     @Override
-    public Result<Errors, Success<String>> deleteImage() {
+    public Result<Failure, Success<String>> deleteImage() {
         return exec(Commands.deleteImageCMD(image),  DELETE_IMAGE_SUCCESS,true);
     }
 
-    public static Result<Errors, Success<String>> startPodmanService() {
+    public static Result<Failure, Success<String>> startPodmanService() {
         return exec(Commands.startPodmanServiceCMD(), PODMAN_SERVICE_STARTED,false);
     }
 }

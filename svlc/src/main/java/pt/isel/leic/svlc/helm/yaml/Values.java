@@ -1,4 +1,9 @@
-package pt.isel.leic.svlc.helms;
+package pt.isel.leic.svlc.helm.yaml;
+
+import org.yaml.snakeyaml.error.YAMLException;
+import pt.isel.leic.svlc.util.results.Failure;
+import pt.isel.leic.svlc.util.results.Result;
+import pt.isel.leic.svlc.util.results.Success;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +12,7 @@ import java.util.Map;
  * This class represents the values of a Helm chart.
  * It is used to store the values of a Helm chart in a map.
  */
-public class Values extends Yaml {
+public class Values extends YamlConverter {
     private final Map<String, Object> values;
 
     /**

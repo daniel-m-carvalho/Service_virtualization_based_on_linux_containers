@@ -6,6 +6,6 @@ package pt.isel.leic.svlc.util.results;
  * @param <R> The type of the right value in the {@link Result} object.
  */
 @FunctionalInterface
-public interface RunProc<L, R> {
+public interface ResultProc<L, R> {
     Result<L, R> run();
 }

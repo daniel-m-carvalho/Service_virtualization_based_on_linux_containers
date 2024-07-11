@@ -1,7 +1,7 @@
 package pt.isel.leic.svlc.pod;
 
 import pt.isel.leic.svlc.util.results.Result;
-import pt.isel.leic.svlc.util.results.Errors;
+import pt.isel.leic.svlc.util.results.Failure;
 import pt.isel.leic.svlc.util.results.Success;
 
 /**
@@ -11,12 +11,12 @@ import pt.isel.leic.svlc.util.results.Success;
  * As well as pulling and deleting images.
  */
 public interface Podman {
-    Result<Errors, Success<String>> createPod();
-    Result<Errors, Success<String>> startPod();
-    Result<Errors, Success<String>> stopPod();
-    Result<Errors, Success<String>> prunePods();
-    Result<Errors, Success<String>> getPodStatistics();
-    Result<Errors, Success<String>> createContainer();
-    Result<Errors, Success<String>> pullImage();
-    Result<Errors, Success<String>> deleteImage();
+    Result<Failure, Success<String>> createPod();
+    Result<Failure, Success<String>> startPod();
+    Result<Failure, Success<String>> stopPod();
+    Result<Failure, Success<String>> prunePods();
+    Result<Failure, Success<String>> getPodStatistics();
+    Result<Failure, Success<String>> createContainer();
+    Result<Failure, Success<String>> pullImage();
+    Result<Failure, Success<String>> deleteImage();
 }

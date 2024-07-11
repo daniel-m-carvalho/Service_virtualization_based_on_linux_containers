@@ -6,7 +6,7 @@ package pt.isel.leic.svlc.util.results;
  * and a method for converting the error
  * message to a string.
  */
-public record Errors (String message){
+public record Failure(String message){
 
     public String message() {
         return message;
