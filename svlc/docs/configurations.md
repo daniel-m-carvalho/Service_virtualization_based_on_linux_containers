@@ -1,5 +1,9 @@
 # Helm Configurations
 
+> [!NOTE] This document is just for documentation purposes.
+> The Helm configurations are used to provide the necessary information to the Helm commands to perform the required operations.
+> All fields are optional and can be set as needed. But once Helm Manager is not to be used, the configurations are mandatory.
+
 ## Table of Contents
 * [Introduction](#introduction)
 * [Configurations](#configurations)

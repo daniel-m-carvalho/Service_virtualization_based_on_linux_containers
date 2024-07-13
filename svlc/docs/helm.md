@@ -1,5 +1,9 @@
 # Helm utilization in SVLC
 
+> [!NOTE] Even though all the code created of helms created in this library, its usage is not recommended. 
+> This because there's no need to use Helm in the project, since the project is already using Kubernetes.
+> This document is just for documentation purposes.
+
 ## Table of Contents
 * [Introduction](#introduction)
 * [Helm](#helm)

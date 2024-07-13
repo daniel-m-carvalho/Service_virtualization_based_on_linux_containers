@@ -27,15 +27,14 @@ This interface is designed to be extensible, allowing for additional implementat
 
 ```java
 public interface Podman {
-  Result<Errors, Success> createPod(String podName);
-  Result<Errors, Success> startPod(String podName);
-  Result<Errors, Success> stopPod(String podName);
-  Result<Errors, Success> prunePods();
-  Result<Errors, Success> createContainer(String podName, String containerName, String imageName);
-  Result<Errors, Success> startContainer(String podName, String containerName);
-  Result<Errors, Success> stopContainer(String podName, String containerName);
-  Result<Errors, Success> pullImage(String imageName);
-  Result<Errors, Success> deleteImage(String imageName);
+  String createPod() throws Exception;
+  String startPod() throws Exception;
+  String stopPod() throws Exception;
+  String prunePods() throws Exception;
+  String getPodStatistics() throws Exception;
+  String createContainer() throws Exception;
+  String pullImage() throws Exception;
+  String deleteImage() throws Exception;
 }
 ```
 
@@ -62,12 +61,12 @@ The `Commands` class contains static methods that return the commands as arrays 
 
 `Examples:`
 ```java
-public static String[] createPodCMD(String podName, String ports) {
-    return new String[] {"podman", "pod", "create", "--name", podName, "-p", ports};
+public static String createPodCMD(String podName, String ports) {
+  return "podman pod create --name " + podName + " -p " + ports;
 }
 
-public static String[] deployInPodCMD(String podName, String image) {
-    return new String[] {"podman", "run", "--pod", podName, "-d", image};
+public static String deployInPodCMD(String podName, String image) {
+  return "podman run -d --pod " + podName + " " + image;
 }
 ```
 
@@ -76,7 +75,7 @@ public static String[] deployInPodCMD(String podName, String image) {
 ### PodmanHttp Class
 
 The [PodmanHttp](../src/main/java/pt/isel/leic/svlc/pod/http/PodmanHttp.java) class interacts with Podman's REST API to manage containers and pods. 
-It uses the `HttpReq` utility class to send HTTP requests to the Podman server. 
+It uses the `HttpExec` utility class to send HTTP requests to the Podman server. 
 This class supports similar operations as `PodmanCmd` but through HTTP requests:
 
 - **Creating and Managing Pods:** HTTP POST requests are sent to endpoints like `/pods/create` and `/pods/{podName}/start`.
@@ -95,7 +94,9 @@ The `Requests` class contains static methods that return the endpoints as string
     
 `Examples:`
 ```java 
-private final static String BASE_URL = "http://localhost:8080/v5.0.0/libpod";
+ public final static String IP_PORT = "localhost:8080";
+
+private final static String BASE_URL = "http://"+ IP_PORT +"/v5.0.0/libpod";
 
 public static String createPodHTTP() {
     return BASE_URL + "/pods/create";
@@ -109,21 +110,21 @@ public static String startPodHTTP(String podName) {
 ### Authentication
 
 To be able to interact with image registries, is necessary include the authentication headers in the HTTP requests.
-For that, the `PodmanHttp` class uses the function createAuthHeader of class `AuthHeader` to create the authentication header.
+For that, the `PodmanHttp` class uses the function createAuthHeader of class `Auth` to create the authentication header.
 This function gets the username and password/token from environment variables and encodes them in Base64.
 
 ```java
-
 public static String createAuthHeader() {
-    //get username and password/token to environment variables
-    String username = System.getenv("USERNAME_ENV_VAR");
-    String access = System.getenv("ACCESS_ENV_VAR");
-    // Manually constructing the JSON string
-    String authJson = "{\"username\":\"" + username + "\", \"password\":\"" + access + "\"}";
-    // Encoding the JSON string using Base64
-    return Base64.getEncoder().encodeToString(authJson.getBytes());
+  String format = "{\"username\":\"%s\",\"token\":\"%s\"}";
+  return encode(format);
 }
 
+private static String encode(String format){
+  //get username and access token to environment variables
+  String username = System.getenv("USERNAME_ENV_VAR");
+  String token = System.getenv("TOKEN_ENV_VAR");
+  return Base64.getEncoder().encodeToString(String.format(format, username, token).getBytes());
+}
 ```
 
 ## Result Handling

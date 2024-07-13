@@ -69,18 +69,54 @@ public interface RunProc<L, R> {
 In the `Result` class, the `RunProc` interface is specifically used within the `then` function.
 This design is particularly useful in scenarios where operations are chained or composed, as it simplifies error
 handling and success processing by leveraging the `Result` object to encapsulate the outcome of each operation.
+The `complete` function is used to finish the execution of a chain of operations, throwing an exception if an error occurred.
 
 `Result::then`
 
 ```java
 
-public Result<L, R> then(RunProc<L, R> next) throws RuntimeException {
-        if (isSuccess()) {
-            return next.run();
-        }
-        throw new RuntimeException(left.toString());
+public Result<L, R> then(DefaultProc<Result<L,R>> resultProc) throws Exception {
+  return execIfElse(
+    success() && resultProc != null,
+    resultProc,
+    () -> {
+      throw new Exception(left.toString());
     }
+  );
+}
 ```
+
+`Result::complete`
+
+```java
+public void complete() throws Exception{
+  execIf(
+    !success(),
+    () -> {
+      throw new Exception(left.toString());
+    }
+  );
+}
+```
+
+The `execIf` and `execIfElse` functions, from `ExecIfElse` class, are utility methods that execute a given procedure 
+based on a condition.
+
+`ExecIfElse::execIf`
+
+```java 
+ public static <T> T execIf(boolean condition, DefaultProc<T> action) throws Exception {
+  return condition ? action.run() : null;
+}
+```
+
+`ExecIfElse::execIfElse`
+
+```java
+public static <T> T execIfElse(boolean condition, DefaultProc<T> action, DefaultProc<T> elseAction) throws Exception {
+  return condition ? action.run() : elseAction.run();
+}
+```    
 
 ## Limitation
 

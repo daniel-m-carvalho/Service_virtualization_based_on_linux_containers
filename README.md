@@ -9,6 +9,7 @@
 * [Mechanisms](#mechanisms)
   * [Podman Mechanism](#podman-mechanism)
   * [Kubernetes Mechanism](#kubernetes-mechanism)
+  * [Utility](#utility)
 * [Artifacts](#artifacts)
   * [Maven](#maven)
   * [Gradle](#gradle)
@@ -40,6 +41,10 @@ The Podman Mechanism is responsible for deploying simple service elements in Pod
 The Kubernetes Mechanism is responsible for deploying more complex service elements in Kubernetes clusters.
 
 **See [Kubernetes Mechanism](svlc/docs/kubernetes.md)**
+
+### Utility
+
+**See [Utility](svlc/docs/utility.md)**
 
 ## Artifacts
 
