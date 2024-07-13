@@ -13,11 +13,17 @@
       <change afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/executers/ReqBuilder.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/kubernetes/Commands.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/kubernetes/KubeResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/podman/Podman.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/yaml/Values.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/docs/configurations.md" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/docs/configurations.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/docs/helm.md" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/docs/helm.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/svlc/docs/kubernetes.md" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/docs/kubernetes.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/svlc/docs/podman.md" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/docs/podman.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/svlc/docs/results.md" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/docs/results.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helm/HelmManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helm/HelmManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helm/yaml/Charts.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/yaml/Charts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helm/yaml/Templates.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/yaml/Templates.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helm/yaml/Values.java" beforeDir="false" />
@@ -25,7 +31,7 @@
       <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helm/yaml/YamlCreateFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/yaml/YamlCreateFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/kubernetes/Kubernetes.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/kubernetes/Kubernetes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/podman/Messages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/Podman.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/podman/Podman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/Podman.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/cmd/CmdExec.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/executers/CmdExec.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/cmd/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/cmd/Commands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/cmd/PodmanCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/cmd/PodmanCmd.java" afterDir="false" />
@@ -33,6 +39,15 @@
       <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/http/PodmanHttp.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/http/PodmanHttp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/auth/AuthHeader.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/HelmApplyOptions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/HelmManagerUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/HelmManagerUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmDependencyConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmDependencyConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmInstallConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmInstallConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmLintConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmLintConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmListConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmListConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmPackageConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmPackageConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmTestConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmTestConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmUninstallConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmUninstallConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmUpgradeConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmUpgradeConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/helmProc.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/DefaultProc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/results/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/results/Result.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/results/ResultProc.java" beforeDir="false" />
@@ -118,7 +133,7 @@
       <workItem from="1720389418886" duration="10957000" />
       <workItem from="1720402411835" duration="1222000" />
       <workItem from="1720482186660" duration="537000" />
-      <workItem from="1720831392696" duration="399000" />
+      <workItem from="1720831392696" duration="999000" />
     </task>
     <task id="LOCAL-00001" summary="docs: start documentation for mechanisms and creation of .gitignore file">
       <option name="closed" value="true" />
