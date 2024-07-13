@@ -15,16 +15,16 @@ public class Templates {
      * Creates a pod template with specified parameters.
      *
      * @param podName         The name of the pod.
-     * @param containerName   The name of the container.
-     * @param image           The Docker image to use for the container.
+     * @param containersName   A list of container names.
+     * @param images          A list of Docker images for the containers.
      * @param imagePullPolicy The image pull policy.
      * @param imagePullSecrets A list of image pull secrets.
      * @return A map representing the pod template.
      */
     public static Map<String, Object> createPodTemplate(
             String podName,
-            String containerName,
-            String image,
+            List<String> containersName,
+            List<String> images,
             String imagePullPolicy,
             List<Map<String, String>> imagePullSecrets
     ) {
@@ -36,18 +36,25 @@ public class Templates {
         metadata.put("name", podName);
         pod.put("metadata", metadata);
 
-        Map<String, Object> container = new HashMap<>();
-        container.put("name", containerName);
-        container.put("image", image);
-        container.put("imagePullPolicy", imagePullPolicy);
+        List<Map<String, Object>> containers = createContainers(containersName, images, imagePullPolicy);
 
         Map<String, Object> spec = new HashMap<>();
-        spec.put("containers", List.of(container));
+        spec.put("containers", containers);
         spec.put("imagePullSecrets", imagePullSecrets);
 
         pod.put("spec", spec);
 
         return pod;
+    }
+
+    private static List<Map<String, Object>> createContainers(List<String> containersName, List<String> images, String imagePullPolicy) {
+        return containersName.stream().map(containerName -> {
+            Map<String, Object> container = new HashMap<>();
+            container.put("name", containerName);
+            container.put("image", images.get(containersName.indexOf(containerName)));
+            container.put("imagePullPolicy", imagePullPolicy);
+            return container;
+        }).toList();
     }
 
     /**

@@ -1,7 +1,10 @@
-pt.isel.leic.svlc.helms
 pt.isel.leic.svlc.kubernetes
-pt.isel.leic.svlc.pod
 pt.isel.leic.svlc.pod.cmd
 pt.isel.leic.svlc.pod.http
+pt.isel.leic.svlc.util
 pt.isel.leic.svlc.util.auth
+pt.isel.leic.svlc.util.executers
+pt.isel.leic.svlc.util.kubernetes
+pt.isel.leic.svlc.util.podman
 pt.isel.leic.svlc.util.results
+pt.isel.leic.svlc.yaml

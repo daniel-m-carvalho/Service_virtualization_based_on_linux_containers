@@ -12,6 +12,7 @@ import io.fabric8.kubernetes.client.utils.Serialization;
 import pt.isel.leic.svlc.util.auth.Auth;
 import pt.isel.leic.svlc.util.kubernetes.KubeResource;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -177,14 +178,23 @@ public class Kubernetes {
 
     /**
      * Deploys a Kubernetes resource from a YAML string.
+     * The YAML string can contain multiple resources separated by "\n---\n".
      *
      * @param yaml The YAML string to deploy.
      * @return The Kubernetes resource that was deployed.
      */
-    public HasMetadata deployFromYaml(String yaml) {
-        HasMetadata resource = Serialization.unmarshal(yaml, HasMetadata.class);
-        String resourceType = resource.getKind();
-        return  resourceMap.get(resourceType).execute(client, namespace, resource);
+    public String deployFromYaml(String yaml) {
+        Arrays.stream(yaml.split("\n---\n")).toList().forEach(this::deploy);
+        return "Deployed successfully";
     }
 
+    /**
+     * Deploys a Kubernetes resource.
+     *
+     * @param yaml The resource to deploy.
+     */
+    private void deploy(String yaml) {
+        HasMetadata resource = Serialization.unmarshal(yaml, HasMetadata.class);
+        resourceMap.get(resource.getKind()).execute(client, namespace, resource);
+    }
 }

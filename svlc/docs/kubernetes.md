@@ -138,26 +138,18 @@ This conversion is crucial for generating Kubernetes manifests from Java applica
 
 ```java
 public class YamlConverter {
-  private static Result<Failure, Success<String>> toYaml(Map<String, Object> data) {
-    try {
-      Yaml yaml = new Yaml();
-      return Result.Right(new Success<>(yaml.dump(data)));
-    } catch (YAMLException e) {
-      return Result.Left(new Failure(e.getMessage()));
-    }
+
+  public static String toYaml(Map<String, Object> data) {
+    return Serialization.asYaml(data);
   }
 
-  public static String generateYaml(Map<String, Object> data) {
-    Result<Failure, Success<String>> yaml = toYaml(data);
-    try {
-      return execIfElse(
-              yaml.success(),
-              () -> yaml.right().value(),
-              () -> yaml.left().message()
-      );
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
+  public static String serializeToYaml(List<Map<String, Object>> resources) {
+    StringBuilder yaml = new StringBuilder();
+    resources.forEach(resource -> {
+      yaml.append(toYaml(resource));
+      yaml.append("\n---\n");
+    });
+    return yaml.toString();
   }
 }
 ```
@@ -221,7 +213,9 @@ public interface KubeResource {
 ## Authentication
 The `Auth` class is responsible for handling authentication in the Kubernetes mechanism.
 It provides methods to authenticate with the Kubernetes cluster using a token.
+You can also create the registry secret for the deployment.
 
+`Auth::getKubernetesToken`
 ```java
 public static String getKubernetesToken(String namespace) throws Exception {
   String secretName = executeCommand(secretNameCMD(namespace), "", true).getOutput();
@@ -229,6 +223,21 @@ public static String getKubernetesToken(String namespace) throws Exception {
 
   byte[] decodedBytes = Base64.getDecoder().decode(encodedToken);
   return new String(decodedBytes);
+}
+```
+    
+`Auth::registryKey`
+```java
+public static String registryKey() {
+    String format = "%s:%s";
+    return encode(format);
+}
+
+private static String encode(String format){
+  //get username and access token to environment variables
+  String username = System.getenv("USERNAME_ENV_VAR");
+  String token = System.getenv("TOKEN_ENV_VAR");
+  return Base64.getEncoder().encodeToString(String.format(format, username, token).getBytes());
 }
 ```
 

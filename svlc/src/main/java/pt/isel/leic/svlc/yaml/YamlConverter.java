@@ -1,14 +1,9 @@
 package pt.isel.leic.svlc.yaml;
 
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.error.YAMLException;
-import pt.isel.leic.svlc.util.results.Failure;
-import pt.isel.leic.svlc.util.results.Result;
-import pt.isel.leic.svlc.util.results.Success;
+import io.fabric8.kubernetes.client.utils.Serialization;
 
+import java.util.List;
 import java.util.Map;
-
-import static pt.isel.leic.svlc.util.executers.ExecIfElse.execIfElse;
 
 /**
  * This class represents a Yaml converter.
@@ -20,28 +15,24 @@ public class YamlConverter {
      * Converts a map to a Yaml string.
      *
      * @param data The map to convert.
-     * @return A {@link Result} object with the Yaml string if the conversion was successful,
-     * or an error message if the conversion was not successful.
+     * @return The Yaml string representation of the map.
      */
-    private static Result<Failure, Success<String>> toYaml(Map<String, Object> data) {
-        try {
-            Yaml yaml = new Yaml();
-            return Result.Right(new Success<>(yaml.dump(data)));
-        } catch (YAMLException e) {
-            return Result.Left(new Failure(e.getMessage()));
-        }
+    public static String toYaml(Map<String, Object> data) {
+        return Serialization.asYaml(data);
     }
 
-    public static String generateYaml(Map<String, Object> data) {
-        Result<Failure, Success<String>> yaml = toYaml(data);
-        try {
-            return execIfElse(
-                yaml.success(),
-                () -> yaml.right().value(),
-                () -> yaml.left().message()
-            );
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    /**
+     * Converts a list of maps to a Yaml string.
+     *
+     * @param resources The list of maps to convert.
+     * @return The Yaml string representation of the list of maps.
+     */
+    public static String serializeToYaml(List<Map<String, Object>> resources) {
+        StringBuilder yaml = new StringBuilder();
+        resources.forEach(resource -> {
+                yaml.append(toYaml(resource));
+                yaml.append("\n---\n");
+        });
+        return yaml.toString();
     }
 }

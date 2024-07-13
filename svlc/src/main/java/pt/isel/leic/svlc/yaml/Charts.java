@@ -1,17 +1,17 @@
 package pt.isel.leic.svlc.yaml;
 
-import pt.isel.leic.svlc.util.executers.ExecIfElse;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
- /**
+import static pt.isel.leic.svlc.yaml.YamlConverter.toYaml;
+
+/**
  * This class represents the metadata of a Helm chart.
  * It is used to store the metadata of a Helm chart in a map.
  */
 
-public class Charts extends YamlConverter {
+public class Charts {
 
     private final String apiVersion = "v2"; // The API version of the Helm chart.
     private String name;    // The name of the Helm chart.
@@ -65,7 +65,7 @@ public class Charts extends YamlConverter {
       *
       * @return A map containing the chart information.
       */
-    public String generateChart() {
+    public Map<String, Object> generateChart() {
         Map<String, Object> map = new HashMap<>();
         map.put("apiVersion", apiVersion);
         map.put("name", name);
@@ -81,7 +81,7 @@ public class Charts extends YamlConverter {
         map.put("type", type);
         map.put("annotations", annotations);
 
-        return generateYaml(map);
+        return map;
     }
 
     public String getApiVersion() {

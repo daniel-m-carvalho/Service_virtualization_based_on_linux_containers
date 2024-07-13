@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * This class represents the values of a chart.
  */
-public class Values extends YamlConverter {
+public class Values {
 
     private final Map<String, Object> values;   // The values of the chart.
 
@@ -26,20 +26,20 @@ public class Values extends YamlConverter {
     }
 
     /**
+     * Returns the values of the chart.
+     * @return the values of the chart
+     */
+    public Map<String, Object> getValues() {
+        return values;
+    }
+
+    /**
      * Sets a property in the map.
      * @param key the key of the property
      * @param value the value of the property
      */
     public void setProperty(String key, Object value) {
         this.values.put(key, value);
-    }
-
-    /**
-     * Generates the values in a YAML format.
-     * @return A String with values in a YAML format
-     */
-    public String generateValues() {
-        return generateYaml(this.values);
     }
 
     @Override
