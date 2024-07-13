@@ -11,47 +11,48 @@ import static pt.isel.leic.svlc.pod.http.Requests.IP_PORT;
  * create containers and delete images.
  */
 public class Commands {
-    public static String[] createPodCMD(String podName, String ports) {
-        return new String[] {"podman", "pod", "create", "--name", podName, "-p", ports};
+
+    public static String createPodCMD(String podName, String ports) {
+        return "podman pod create --name " + podName + " -p " + ports;
     }
 
-    public static String[] deployInPodCMD(String podName, String image) {
-        return new String[] {"podman", "run", "--pod", podName, "-d", image};
+    public static String deployInPodCMD(String podName, String image) {
+        return "podman run -d --pod " + podName + " " + image;
     }
 
-    public static String [] pullImageCMD(String image) {
-        return new String[] {"podman", "pull", image};
+    public static String pullImageCMD(String image) {
+        return "podman pull " + image;
     }
 
-    public static String [] checkImageCMD(String image) {
-        return new String[] {"podman", "images", "-q", image};
+    public static String checkImageCMD(String image) {
+        return "podman image -q " + image;
     }
 
-    public static String [] prunePodsCMD() {
-        return new String[] {"podman", "pod", "prune"};
+    public static String prunePodsCMD() {
+        return "podman pod prune";
     }
 
-    public static String [] startPodCMD(String podName) {
-        return new String[] {"podman", "pod", "start", podName};
+    public static String startPodCMD(String podName) {
+        return "podman pod start " + podName;
     }
 
-    public static String [] stopPodCMD(String podName) {
-        return new String[] {"podman", "pod", "stop", podName};
+    public static String stopPodCMD(String podName) {
+        return "podman pod stop " + podName;
     }
 
-    public static String [] getPodStatisticsCMD(String podName) {
-        return new String[] {"podman", "pod", "stats", podName};
+    public static String  getPodStatisticsCMD(String podName) {
+        return "podman pod stats " + podName;
     }
 
-    public static String [] createContainerCMD(String image) {
-        return new String[] {"podman", "create", image};
+    public static String createContainerCMD(String image) {
+        return  "podman create " + image;
     }
 
-    public static String [] deleteImageCMD(String imageId) {
-        return new String[] {"podman", "image", "rm", imageId};
+    public static String deleteImageCMD(String imageId) {
+        return "podman rmi " + imageId;
     }
 
-    public static String [] startPodmanServiceCMD() {
-        return new String[]{"podman", "system", "service", "tcp:" + IP_PORT};
+    public static String startPodmanServiceCMD() {
+        return "podman system service tcp:" + IP_PORT;
     }
 }

@@ -1,5 +1,10 @@
 package pt.isel.leic.svlc.util.results;
 
+import pt.isel.leic.svlc.util.DefaultProc;
+
+import static pt.isel.leic.svlc.util.executers.ExecIfElse.execIf;
+import static pt.isel.leic.svlc.util.executers.ExecIfElse.execIfElse;
+
 /**
  * This class represents a container object that may either contain a failure (left) or a success (right) value.
  * It is used to handle operations that can either succeed or fail.
@@ -77,11 +82,14 @@ public record Result<L, R>(L left, R right) {
      * @return The result of the runner if the operation succeeded.
      * @throws RuntimeException If the operation failed.
      */
-    public Result<L, R> then(ResultProc<L, R> resultProc) throws RuntimeException {
-        if (success() && resultProc != null) {
-            return resultProc.run();
-        }
-        throw new RuntimeException(left.toString());
+    public Result<L, R> then(DefaultProc<Result<L,R>> resultProc) throws Exception {
+        return execIfElse(
+            success() && resultProc != null,
+            resultProc,
+            () -> {
+                throw new Exception(left.toString());
+            }
+        );
     }
 
     /**
@@ -98,7 +106,12 @@ public record Result<L, R>(L left, R right) {
      * This method is used when the operation is the last in a chain of operations.
      *  It throws a RuntimeException if the operation failed.
      */
-    public void complete() {
-        if (!success()) throw new RuntimeException(left.toString());
+    public void complete() throws Exception{
+        execIf(
+            !success(),
+            () -> {
+                throw new Exception(left.toString());
+            }
+        );
     }
 }

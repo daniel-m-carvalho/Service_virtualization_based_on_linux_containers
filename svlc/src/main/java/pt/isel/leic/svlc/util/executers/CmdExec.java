@@ -1,8 +1,11 @@
-package pt.isel.leic.svlc.pod.cmd;
+package pt.isel.leic.svlc.util.executers;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.stream.Collectors;
+
+import static pt.isel.leic.svlc.util.executers.CommandResult.fromOutput;
+import static pt.isel.leic.svlc.util.executers.CommandResult.fromThread;
 
 /**
  *  This class executes a command using a ProcessBuilder.
@@ -20,25 +23,26 @@ public class CmdExec {
      * @return The output of the command.
      * @throws Exception If the command fails.
      */
-    public static String executeCommand(String[] command, String successMessage, boolean wait) throws Exception {
+    public static CommandResult executeCommand(String command, String successMessage, boolean wait) throws Exception {
         ProcessBuilder processBuilder = new ProcessBuilder(command);
         if (wait){
-            return synchronousExec(processBuilder, successMessage);
+            return fromOutput(synchronousExec(processBuilder, successMessage));
         }else {
-            return asynchronousExec(processBuilder, successMessage);
+            return fromThread(asynchronousExec(processBuilder));
         }
     }
 
-    private static String asynchronousExec(ProcessBuilder processBuilder, String successMessage) {
-        new Thread( () -> {
+    private static Thread asynchronousExec(ProcessBuilder processBuilder) {
+        Thread thread = new Thread( () -> {
             try {
                 Process process = processBuilder.start();
                 process.waitFor();
             } catch (Exception e) {
                 System.err.println("[ERROR]: " + e.getMessage());
             }
-        }).start();
-        return successMessage;
+        });
+        thread.start();
+        return thread;
     }
 
     private static String synchronousExec(ProcessBuilder processBuilder, String successMessage) throws Exception {

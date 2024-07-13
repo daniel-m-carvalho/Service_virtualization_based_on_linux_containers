@@ -1,4 +1,4 @@
-package pt.isel.leic.svlc.pod.http;
+package pt.isel.leic.svlc.util.executers;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -11,10 +11,16 @@ import java.util.Map;
  * Provides utility methods for making HTTP requests.
  * This class is generic and can be used for any HTTP request.
  */
-public class HttpReq {
+public class HttpExec {
 
     public static final String defaultPayload = ""; // Default payload for requests
     private static final String contentType = "application/json"; // Default content type for requests
+    private static final Map<String, ReqBuilder> clientBuilderMap = Map.of(
+            "GET", (builder, body) -> builder.GET(),
+            "POST", HttpRequest.Builder::POST,
+            "PUT", HttpRequest.Builder::PUT,
+            "DELETE", (builder, body) -> builder.DELETE()
+    );
 
     /**
      * Executes an HTTP request with the specified parameters.
@@ -48,31 +54,24 @@ public class HttpReq {
             requestBuilder.header("X-Registry-Auth", authInfo);
         }
 
-        // Set the method dynamically based on the input parameter
-        switch (method.toUpperCase()) {
-            case "GET":
-                requestBuilder.GET();
-                break;
-            case "POST":
-                requestBuilder.POST(BodyPublishers.ofString(payload));
-                break;
-            case "PUT":
-                requestBuilder.PUT(BodyPublishers.ofString(payload));
-                break;
-            case "DELETE":
-                requestBuilder.DELETE();
-                break;
-            default:
-                throw new IllegalArgumentException("Unsupported HTTP method: " + method);
-        }
+        HttpRequest request = clientBuilderMap.getOrDefault(
+            method,
+            (builder, body) -> {
+                throw new Exception("Unsupported method: " + method);
+            }
+        ).apply(
+            requestBuilder,
+            BodyPublishers.ofString(payload)
+        ).build();
 
-        HttpRequest request = requestBuilder.build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        // Check for successful status codes more generically
-        if (isError(response.statusCode())) {
-            throw new Exception("Request failed with status code: " + response.statusCode() + "\n" + response.body());
-        }
+        ExecIfElse.execIf(
+                isError(response.statusCode()),
+                () -> {
+                    throw new Exception("Request failed with status code: " + response.statusCode());
+                }
+        );
 
         return response.body();
     }

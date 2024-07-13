@@ -1,4 +1,6 @@
-package pt.isel.leic.svlc.helm.yaml;
+package pt.isel.leic.svlc.yaml;
+
+import pt.isel.leic.svlc.util.executers.ExecIfElse;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,20 +12,24 @@ import java.util.Map;
  */
 
 public class Charts extends YamlConverter {
-    private final String apiVersion = "v2";
-    private String name;
-    private String description;
-    private String version;
-    private String appVersion;
-    private List<String> keywords;
-    private Map<String, String> sources;
-    private List<String> maintainers;
+
+    private final String apiVersion = "v2"; // The API version of the Helm chart.
+    private String name;    // The name of the Helm chart.
+    private String description; // A short description of the chart.
+    private String version; // The version of the chart.
+    private String appVersion;  // The version of the app this chart installs.
+    private List<String> keywords;  // A list of keywords associated with the chart.
+    private Map<String, String> sources;    // The source URLs of the chart.
+    private List<String> maintainers;   // The maintainers of the chart.
     private String home; // optional
     private String icon; // optional
     private List<String> dependencies; // optional
     private String type; // optional
-    private Map<String, String> annotations;
+    private Map<String, String> annotations; // optional
 
+    /**
+     * Constructs a Charts object with no arguments.
+     */
     public Charts() {}
 
      /**
@@ -59,7 +65,7 @@ public class Charts extends YamlConverter {
       *
       * @return A map containing the chart information.
       */
-    public Map<String, Object> generateChart() {
+    public String generateChart() {
         Map<String, Object> map = new HashMap<>();
         map.put("apiVersion", apiVersion);
         map.put("name", name);
@@ -74,7 +80,8 @@ public class Charts extends YamlConverter {
         map.put("dependencies", dependencies);
         map.put("type", type);
         map.put("annotations", annotations);
-        return map;
+
+        return generateYaml(map);
     }
 
     public String getApiVersion() {

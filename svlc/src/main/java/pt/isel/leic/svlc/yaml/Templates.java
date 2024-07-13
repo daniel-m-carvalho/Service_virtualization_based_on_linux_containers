@@ -1,8 +1,4 @@
-package pt.isel.leic.svlc.helm.yaml;
-
-import pt.isel.leic.svlc.util.results.Failure;
-import pt.isel.leic.svlc.util.results.Result;
-import pt.isel.leic.svlc.util.results.Success;
+package pt.isel.leic.svlc.yaml;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,6 +10,45 @@ import java.util.Map;
  * The templates are generated as YAML strings.
  */
 public class Templates {
+
+    /**
+     * Creates a pod template with specified parameters.
+     *
+     * @param podName         The name of the pod.
+     * @param containerName   The name of the container.
+     * @param image           The Docker image to use for the container.
+     * @param imagePullPolicy The image pull policy.
+     * @param imagePullSecrets A list of image pull secrets.
+     * @return A map representing the pod template.
+     */
+    public static Map<String, Object> createPodTemplate(
+            String podName,
+            String containerName,
+            String image,
+            String imagePullPolicy,
+            List<Map<String, String>> imagePullSecrets
+    ) {
+        Map<String, Object> pod = new HashMap<>();
+        pod.put("apiVersion", "v1");
+        pod.put("kind", "Pod");
+
+        Map<String, String> metadata = new HashMap<>();
+        metadata.put("name", podName);
+        pod.put("metadata", metadata);
+
+        Map<String, Object> container = new HashMap<>();
+        container.put("name", containerName);
+        container.put("image", image);
+        container.put("imagePullPolicy", imagePullPolicy);
+
+        Map<String, Object> spec = new HashMap<>();
+        spec.put("containers", List.of(container));
+        spec.put("imagePullSecrets", imagePullSecrets);
+
+        pod.put("spec", spec);
+
+        return pod;
+    }
 
     /**
      * Creates a deployment template with specified parameters.
@@ -199,7 +234,7 @@ public class Templates {
             String capacity,
             String hostPath
     ) {
-        Map<String, Object> pv = new HashMap<>();
+        Map<String, Object> pv = createTemplateHeader(name + "-pv", "PersistentVolume", null, null);
         Map<String, Object> metadata = new HashMap<>();
         metadata.put("name", name);
         pv.put("metadata", metadata);
@@ -212,31 +247,6 @@ public class Templates {
         pv.put("spec", spec);
 
         return pv;
-    }
-
-    /**
-     * Creates an Ingress template with specified parameters.
-     *
-     * @param name        The name of the Ingress.
-     * @param rules       The rules defining how traffic should be routed.
-     * @param annotations Annotations to apply to the Ingress.
-     * @param labels      Labels to apply to the Ingress.
-     * @return A map representing the Ingress template.
-     */
-    public static Map<String, Object> createIngressTemplate(
-            String name,
-            List<Map<String, Object>> rules,
-            Map<String, String> annotations,
-            Map<String, String> labels
-    ) {
-        Map<String, Object> ingress = createTemplateHeader(name + "-ingress", "Ingress", labels, annotations);
-
-        Map<String, Object> spec = new HashMap<>();
-        spec.put("rules", rules);
-
-        ingress.put("spec", spec);
-
-        return ingress;
     }
 
     /**

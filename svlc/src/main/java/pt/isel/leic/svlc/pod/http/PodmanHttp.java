@@ -1,16 +1,15 @@
 package pt.isel.leic.svlc.pod.http;
 
-import pt.isel.leic.svlc.pod.Podman;
+import pt.isel.leic.svlc.util.podman.Podman;
+import pt.isel.leic.svlc.util.executers.HttpExec;
 import pt.isel.leic.svlc.util.results.Result;
-import pt.isel.leic.svlc.util.results.Failure;
-import pt.isel.leic.svlc.util.results.Success;
 
 import java.util.Map;
 
-import static pt.isel.leic.svlc.pod.Messages.IMAGE_EXISTS_ASSUMPTION;
-import static pt.isel.leic.svlc.util.auth.AuthHeader.createAuthHeader;
-import static pt.isel.leic.svlc.util.results.Result.Left;
-import static pt.isel.leic.svlc.util.results.Result.Right;
+import static pt.isel.leic.svlc.util.executers.ExecIfElse.execIfElse;
+import static pt.isel.leic.svlc.util.podman.Messages.IMAGE_EXISTS_ASSUMPTION;
+import static pt.isel.leic.svlc.util.auth.Auth.createAuthHeader;
+import static pt.isel.leic.svlc.util.executers.HttpExec.executeRequest;
 import static pt.isel.leic.svlc.pod.http.Requests.*;
 
 /**
@@ -40,23 +39,6 @@ public class PodmanHttp implements Podman {
     }
 
     /**
-     * Executes an HTTP request with the specified parameters.
-     *
-     * @param method      The HTTP method to use (e.g., "GET", "POST").
-     * @param url         The endpoint URL.
-     * @param payload     The request payload, if any.
-     * @param queryString Query parameters for the request.
-     * @return Either an error or a success message wrapped in an {@link Result} object.
-     */
-    private Result<Failure, Success<String>> exec(String method, String url, String payload, Map<String, String> queryString, String authInfo) {
-        try {
-            return Right(new Success<String>(HttpReq.executeRequest(method, url, payload, queryString, authInfo)));
-        } catch (Exception e) {
-            return Left(new Failure("Failed to deploy. " + e.getMessage()));
-        }
-    }
-
-    /**
      * Sets the payload for the HTTP request.
      *
      * @param payload The payload to set.
@@ -80,8 +62,8 @@ public class PodmanHttp implements Podman {
      * @return Either an error or a success message wrapped in an {@link Result} object.
      */
     @Override
-    public Result<Failure, Success<String>> createContainer() {
-        return exec("POST", createContainerHTTP(), payload, null, null);
+    public String createContainer() throws Exception {
+        return executeRequest("POST", createContainerHTTP(), payload, null, null);
     }
 
     /**
@@ -90,8 +72,8 @@ public class PodmanHttp implements Podman {
      * @return Either an error or a success message wrapped in an {@link Result} object.
      */
     @Override
-    public Result<Failure, Success<String>> startPod() {
-        return exec("POST", startPodHTTP(podName), HttpReq.defaultPayload, null, null);
+    public String startPod() throws Exception {
+        return executeRequest("POST", startPodHTTP(podName), HttpExec.defaultPayload, null, null);
     }
 
     /**
@@ -100,8 +82,8 @@ public class PodmanHttp implements Podman {
      * @return Either an error or a success message wrapped in an {@link Result} object.
      */
     @Override
-    public Result<Failure, Success<String>> stopPod() {
-        return exec("POST", stopPodHTTP(podName), HttpReq.defaultPayload, null, null);
+    public String stopPod() throws Exception {
+        return executeRequest("POST", stopPodHTTP(podName), HttpExec.defaultPayload, null, null);
     }
 
     /**
@@ -110,8 +92,8 @@ public class PodmanHttp implements Podman {
      * @return Either an error or a success message wrapped in an {@link Result} object.
      */
     @Override
-    public Result<Failure, Success<String>> prunePods() {
-        return exec("POST", prunePodsHTTP(), HttpReq.defaultPayload, null, null);
+    public String prunePods() throws Exception {
+        return executeRequest("POST", prunePodsHTTP(), HttpExec.defaultPayload, null, null);
     }
 
     /**
@@ -120,8 +102,8 @@ public class PodmanHttp implements Podman {
      * @return Either an error or a success message wrapped in an {@link Result} object.
      */
     @Override
-    public Result<Failure, Success<String>> getPodStatistics() {
-        return exec("GET", statisticsPodHTTP(), HttpReq.defaultPayload, null, null);
+    public String getPodStatistics() throws Exception {
+        return executeRequest("GET", statisticsPodHTTP(), HttpExec.defaultPayload, null, null);
     }
 
     /**
@@ -130,8 +112,8 @@ public class PodmanHttp implements Podman {
      * @return Either an error or a success message wrapped in an {@link Result} object.
      */
     @Override
-    public Result<Failure, Success<String>> createPod() {
-        return exec("POST", createPodHTTP(), payload, null, null);
+    public String createPod() throws Exception {
+        return executeRequest("POST", createPodHTTP(), payload, null, null);
     }
 
     /**
@@ -140,11 +122,12 @@ public class PodmanHttp implements Podman {
      * @return Either an error or a success message wrapped in an {@link Result} object.
      */
     @Override
-    public Result<Failure, Success<String>> pullImage() {
-        if (image.split("/").length == 1) {
-            return Right(new Success<String>(IMAGE_EXISTS_ASSUMPTION));
-        }
-        return exec("POST", pullImageHTTP(), HttpReq.defaultPayload, queryString, createAuthHeader());
+    public String pullImage() throws Exception {
+        return execIfElse(
+                image.split("/").length == 1,
+                () -> IMAGE_EXISTS_ASSUMPTION,
+                () -> executeRequest("POST", pullImageHTTP(), HttpExec.defaultPayload, queryString, createAuthHeader())
+        );
     }
 
     /**
@@ -153,7 +136,7 @@ public class PodmanHttp implements Podman {
      * @return Either an error or a success message wrapped in an {@link Result} object.
      */
     @Override
-    public Result<Failure, Success<String>> deleteImage() {
-        return exec("DELETE", deleteImageHTTP(image), HttpReq.defaultPayload, null, null);
+    public String deleteImage() throws Exception {
+        return executeRequest("DELETE", deleteImageHTTP(image), HttpExec.defaultPayload, null, null);
     }
 }

@@ -1,4 +1,4 @@
-package pt.isel.leic.svlc.pod;
+package pt.isel.leic.svlc.util.podman;
 
 public class Messages {
     public static final String CREATE_POD_SUCCESS = "Pod created successfully.";
