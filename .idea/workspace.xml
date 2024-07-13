@@ -5,66 +5,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85bcce74-7db6-4ed3-8867-3cbab6be5d7a" name="Changes" comment="chore: add image of idea">
-      <change afterPath="$PROJECT_DIR$/svlc/docs/kubernetes.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/Messages.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/results/Success.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/svlc/.idea/markdown.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/svlc/docs/utility.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/auth/Auth.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/executers/CommandResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/executers/CommonExec.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/executers/ReqBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/kubernetes/Commands.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/kubernetes/KubeResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/docs/podman.md" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/docs/podman.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/helms/ChartYaml.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helms/Charts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/helms/Templates.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helms/Templates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/helms/ValuesYaml.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helms/Values.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/helms/Yaml.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helms/Yaml.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/kubernetes/Kubernetes.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/kubernetes/Kubernetes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/pod/Podman.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/Podman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/pod/PodmanCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/cmd/PodmanCmd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/pod/PodmanHttp.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/http/PodmanHttp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/RunProc.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/results/RunProc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/auth/AuthHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/auth/AuthHeader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/cli/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/cli/CLI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/cli/CommandsList.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/cli/CommandsList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/controllers/cmd/CmdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/controllers/CmdController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/controllers/cmd/CmdExec.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/cmd/CmdExec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/controllers/cmd/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/cmd/Commands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/controllers/http/HttpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/controllers/HttpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/controllers/http/HttpReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/http/HttpReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/controllers/http/Requests.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/http/Requests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/results/Errors.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/results/Errors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/results/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/results/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/mechanisms/src/main/java/pt/isel/leic/svlc/util/results/Success.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/main/java/com/example/helloworld/HelloWorldApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/main/java/com/example/helloworld/controller/HelloWorldController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/main/java/com/testing/HelloWorldApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/main/java/com/testing/HelloWorldController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/main/resources/application-dev.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/test/java/com/example/helloworld/HelloWorldApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/test/java/com/example/helloworld/controller/HelloWorldControllerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/test/java/com/testing/HelloWorldControllerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/test-examples/hello-world/src/test/java/com/testing/HelloWorldIntegrationTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/Containerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/jib-test/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/jib-test/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/jib-test/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/jib-test/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/jib-test/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/jib-test/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/jib-test/src/main/java/org/example/HelloWorld.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/jib-test/src/main/resources/world" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/testing-tecnologies/jib-test/testPod.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/docs/configurations.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/docs/helm.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/docs/kubernetes.md" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/docs/kubernetes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/docs/podman.md" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/docs/podman.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/docs/results.md" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/docs/results.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helm/HelmManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helm/yaml/Charts.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/yaml/Charts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helm/yaml/Templates.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/yaml/Templates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helm/yaml/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/yaml/Values.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helm/yaml/YamlConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/yaml/YamlConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/helm/yaml/YamlCreateFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/yaml/YamlCreateFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/kubernetes/Kubernetes.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/kubernetes/Kubernetes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/podman/Messages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/Podman.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/podman/Podman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/cmd/CmdExec.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/executers/CmdExec.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/cmd/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/cmd/Commands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/cmd/PodmanCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/cmd/PodmanCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/http/HttpReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/executers/HttpExec.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/http/PodmanHttp.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/pod/http/PodmanHttp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/auth/AuthHeader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/HelmApplyOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/executers/ExecIfElse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/HelmManagerUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmDependencyConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmInstallConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmLintConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmListConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmPackageConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmTestConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmUninstallConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/configurations/HelmUpgradeConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/helm/helmProc.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/DefaultProc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/results/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/results/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/util/results/ResultProc.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,12 +66,12 @@
     &quot;assignee&quot;: &quot;daniel-m-carvalho&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/daniel-m-carvalho/SVLC-Final_Project.git&quot;,
-    &quot;accountId&quot;: &quot;8d456d8f-fa5b-4912-8c08-673a5a3afe39&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/daniel-m-carvalho/Service_virtualization_based_on_linux_containers.git",
+    "accountId": "8d456d8f-fa5b-4912-8c08-673a5a3afe39"
   }
-}</component>
+}]]></component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -94,6 +80,7 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2iThn1zX8OwpuHwwwM3SJiLYp4C" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -104,13 +91,13 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Daniel/Faculdade/Ano_3/Semestre_6/PS/Project/SVLC-Final_Project/svlc",
+    "last_opened_file_path": "C:/Daniel/Faculdade/Ano_3/Semestre_6/PS/Project/Service_virtualization_based_on_linux_containers",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "configurable.group.build",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -146,6 +133,7 @@
       <workItem from="1720389418886" duration="10957000" />
       <workItem from="1720402411835" duration="1222000" />
       <workItem from="1720482186660" duration="537000" />
+      <workItem from="1720831392696" duration="62000" />
     </task>
     <task id="LOCAL-00001" summary="docs: start documentation for mechanisms and creation of .gitignore file">
       <option name="closed" value="true" />
@@ -194,6 +182,9 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/svlc" />
+    </ignored-roots>
     <MESSAGE value="docs: start documentation for mechanisms and creation of .gitignore file" />
     <MESSAGE value="refactor: change the mechanisms classes directories, improve the previous code and add more methods to both http and cmd Podman CLI communication. Also do a restructure to the Yaml classes." />
     <MESSAGE value="chore: add dependencies to pom.xml and consequential changes" />
