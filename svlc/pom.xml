@@ -58,6 +58,12 @@
             <artifactId>kubernetes-client</artifactId>
             <version>6.12.1</version>
         </dependency>
+        <!-- helm-client for interacting with Helm charts -->
+<!--        <dependency>-->
+<!--            <groupId>com.marcnuri.helm-java</groupId>-->
+<!--            <artifactId>helm-java</artifactId>-->
+<!--            <version>0.0.10</version>-->
+<!--        </dependency>-->
         <!-- SnakeYAML for YAML processing -->
         <dependency>
             <groupId>org.yaml</groupId>
