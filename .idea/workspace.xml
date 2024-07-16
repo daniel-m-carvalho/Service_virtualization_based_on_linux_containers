@@ -4,116 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85bcce74-7db6-4ed3-8867-3cbab6be5d7a" name="Changes" comment="refactor: make kubernetes mechanism and change the projects structure and names">
-      <change beforePath="$PROJECT_DIR$/svlc/docs/kubernetes.md" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/docs/kubernetes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/kubernetes/Kubernetes.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/kubernetes/Kubernetes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/yaml/Charts.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/yaml/Charts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/yaml/Templates.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/yaml/Templates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/yaml/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/yaml/Values.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/yaml/YamlConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/src/main/java/pt/isel/leic/svlc/yaml/YamlConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/allclasses-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/allpackages-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/constant-values.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/element-list" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/element-list" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/help-doc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/index-all.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/index-all.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/jquery-ui.overrides.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/legal/ASSEMBLY_EXCEPTION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/legal/jquery.md" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/legal/jquery.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/legal/jqueryUI.md" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/legal/jqueryUI.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/member-search-index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/overview-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/overview-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/package-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/package-search-index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/helms/Charts.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/helms/Templates.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/helms/Values.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/helms/Yaml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/helms/class-use/Charts.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/helms/class-use/Templates.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/helms/class-use/Values.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/helms/class-use/Yaml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/helms/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/helms/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/helms/package-use.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/kubernetes/Kubernetes.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/kubernetes/Kubernetes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/kubernetes/class-use/Kubernetes.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/kubernetes/class-use/Kubernetes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/kubernetes/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/kubernetes/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/kubernetes/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/kubernetes/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/kubernetes/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/kubernetes/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/Messages.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/Podman.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/class-use/Messages.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/class-use/Podman.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/cmd/CmdExec.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/cmd/Commands.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/cmd/Commands.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/cmd/PodmanCmd.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/cmd/PodmanCmd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/cmd/class-use/CmdExec.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/cmd/class-use/Commands.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/cmd/class-use/Commands.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/cmd/class-use/PodmanCmd.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/cmd/class-use/PodmanCmd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/cmd/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/cmd/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/cmd/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/cmd/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/cmd/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/cmd/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/http/HttpReq.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/http/PodmanHttp.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/http/PodmanHttp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/http/Requests.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/http/Requests.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/http/class-use/HttpReq.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/http/class-use/PodmanHttp.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/http/class-use/PodmanHttp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/http/class-use/Requests.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/http/class-use/Requests.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/http/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/http/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/http/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/http/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/http/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/http/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/pod/package-use.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/auth/AuthHeader.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/auth/class-use/AuthHeader.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/auth/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/auth/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/auth/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/auth/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/auth/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/auth/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/results/Errors.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/results/Result.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/results/Result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/results/RunProc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/results/Success.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/results/Success.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/results/class-use/Errors.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/results/class-use/Result.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/results/class-use/Result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/results/class-use/RunProc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/results/class-use/Success.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/results/class-use/Success.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/results/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/results/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/results/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/results/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/results/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/pt/isel/leic/svlc/util/results/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/script-dir/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/script-dir/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/script-dir/jquery-ui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/script-dir/jquery-ui.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/stylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/apidocs/type-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/apidocs/type-search-index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/helms/Charts.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/helms/Templates.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/helms/Values.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/helms/Yaml.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/kubernetes/Kubernetes.class" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/kubernetes/Kubernetes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/pod/Messages.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/pod/Podman.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/pod/cmd/CmdExec.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/pod/cmd/Commands.class" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/pod/cmd/Commands.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/pod/cmd/PodmanCmd.class" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/pod/cmd/PodmanCmd.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/pod/http/HttpReq.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/pod/http/PodmanHttp.class" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/pod/http/PodmanHttp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/pod/http/Requests.class" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/pod/http/Requests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/util/auth/AuthHeader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/util/results/Errors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/util/results/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/util/results/Result.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/util/results/RunProc.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/util/results/Success.class" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/classes/pt/isel/leic/svlc/util/results/Success.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/maven-javadoc-plugin-stale-data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/maven-javadoc-plugin-stale-data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svlc/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/svlc/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-    </list>
+    <list default="true" id="85bcce74-7db6-4ed3-8867-3cbab6be5d7a" name="Changes" comment="refactor: change code to make process easier&#10;doc: change documentation&#10;chore: change on pom.xml file and others" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -168,6 +59,7 @@
       <recent name="C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\SVLC-Final_Project\assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\assets" />
       <recent name="C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\SVLC-Final_Project\demo" />
       <recent name="C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\SVLC-Final_Project" />
     </key>
@@ -196,7 +88,7 @@
       <workItem from="1720402411835" duration="1222000" />
       <workItem from="1720482186660" duration="537000" />
       <workItem from="1720831392696" duration="1174000" />
-      <workItem from="1720893366838" duration="300000" />
+      <workItem from="1720893366838" duration="732000" />
     </task>
     <task id="LOCAL-00001" summary="docs: start documentation for mechanisms and creation of .gitignore file">
       <option name="closed" value="true" />
@@ -270,7 +162,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720832787507</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="refactor: change code to make process easier&#10;doc: change documentation&#10;chore: change on pom.xml file and others">
+      <option name="closed" value="true" />
+      <created>1720893856862</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1720893856862</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,7 +189,8 @@
     <MESSAGE value="doc: change on documentation." />
     <MESSAGE value="chore: change .xml" />
     <MESSAGE value="refactor: make kubernetes mechanism and change the projects structure and names" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: make kubernetes mechanism and change the projects structure and names" />
+    <MESSAGE value="refactor: change code to make process easier&#10;doc: change documentation&#10;chore: change on pom.xml file and others" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: change code to make process easier&#10;doc: change documentation&#10;chore: change on pom.xml file and others" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -19,11 +19,11 @@
 -docencoding
 'UTF-8'
 -doctitle
-'SVLC Library 1.1.2 API'
+'SVLC Library 1.1.6 API'
 -use
 -version
 -windowtitle
-'SVLC Library 1.1.2 API'
+'SVLC Library 1.1.6 API'
 'C:/Daniel/Faculdade/Ano_3/Semestre_6/PS/Project/Service_virtualization_based_on_linux_containers/svlc/src/main/java/pt/isel/leic/svlc/helm/HelmManager.java'
 'C:/Daniel/Faculdade/Ano_3/Semestre_6/PS/Project/Service_virtualization_based_on_linux_containers/svlc/src/main/java/pt/isel/leic/svlc/kubernetes/Kubernetes.java'
 'C:/Daniel/Faculdade/Ano_3/Semestre_6/PS/Project/Service_virtualization_based_on_linux_containers/svlc/src/main/java/pt/isel/leic/svlc/pod/cmd/Commands.java'
@@ -102,25 +102,25 @@ C:\Users\dmart\.m2\repository\net\bytebuddy\byte-buddy\1.14.9\byte-buddy-1.14.9.
 C:\Users\dmart\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.0\jackson-core-2.17.0.jar = 1713172582582
 C:\Users\dmart\.m2\repository\io\fabric8\zjsonpatch\0.3.0\zjsonpatch-0.3.0.jar = 1719604201516
 C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\src\main\java = 1720556021863
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\generated-sources\annotations = 1720893957290
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\allclasses-index.html = 1720893961784
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\allpackages-index.html = 1720893961787
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\constant-values.html = 1720893961668
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\copy.svg = 1720893961828
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\element-list = 1720893961600
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\help-doc.html = 1720893961824
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\index-all.html = 1720893961816
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\index.html = 1720893961766
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\link.svg = 1720893961829
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\member-search-index.js = 1720893961793
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\module-search-index.js = 1720893961789
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\overview-summary.html = 1720893961820
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\overview-tree.html = 1720893961763
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\package-search-index.js = 1720893961790
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\script.js = 1720893961827
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\search-page.js = 1720893961831
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\search.html = 1720893961818
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\search.js = 1720893961830
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\stylesheet.css = 1720893961825
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\tag-search-index.js = 1720893961794
-C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\type-search-index.js = 1720893961791
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\generated-sources\annotations = 1721143356145
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\allclasses-index.html = 1721143361693
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\allpackages-index.html = 1721143361696
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\constant-values.html = 1721143361590
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\copy.svg = 1721143361731
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\element-list = 1721143361531
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\help-doc.html = 1721143361727
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\index-all.html = 1721143361721
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\index.html = 1721143361678
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\link.svg = 1721143361733
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\member-search-index.js = 1721143361699
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\module-search-index.js = 1721143361697
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\overview-summary.html = 1721143361724
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\overview-tree.html = 1721143361676
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\package-search-index.js = 1721143361698
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\script.js = 1721143361730
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\search-page.js = 1721143361736
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\search.html = 1721143361723
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\search.js = 1721143361734
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\stylesheet.css = 1721143361729
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\tag-search-index.js = 1721143361700
+C:\Daniel\Faculdade\Ano_3\Semestre_6\PS\Project\Service_virtualization_based_on_linux_containers\svlc\target\apidocs\type-search-index.js = 1721143361698
