@@ -14,7 +14,7 @@
     <!-- Project Identification -->
     <groupId>pt.isel.leic.svlc</groupId>
     <artifactId>mechanisms</artifactId>
-    <version>1.1.2</version>
+    <version>2.0.7</version>
 
     <name>SVLC Library</name>
     <description>A library for integrating Podman and kubernetes in Java and Kotlin applications.</description>
@@ -26,8 +26,6 @@
         <maven.compiler.target>17</maven.compiler.target>
         <!-- Encoding standard for the project source files -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- SnakeYAML version to address specific vulnerabilities -->
-        <snakeyaml.version>2.2</snakeyaml.version>
     </properties>
 
     <!-- Distribution Management for GitHub Packages -->
@@ -40,25 +38,74 @@
     </distributionManagement>
 
     <dependencies>
+        <!-- JUnit Jupiter API for writing tests -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.3</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- JUnit Jupiter Engine for running tests -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Jakarta XML Binding API for XML serialization -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.2</version>
+        </dependency>
         <!-- OkHttp for making HTTP requests -->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
             <version>4.12.0</version>
         </dependency>
-        <!-- Kubernetes Client for interacting with Kubernetes APIs -->
+        <!-- Kubernetes Java Client for interacting with Kubernetes APIs -->
         <dependency>
-            <groupId>io.fabric8</groupId>
-            <artifactId>kubernetes-client</artifactId>
-            <version>6.12.1</version>
+            <groupId>io.kubernetes</groupId>
+            <artifactId>client-java</artifactId>
+            <version>21.0.0-legacy</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.nimbusds</groupId>
+                    <artifactId>nimbus-jose-jwt</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>net.minidev</groupId>
+                    <artifactId>json-smart</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Safe version of nimbus-jose-jwt -->
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+            <version>9.40</version>
+        </dependency>
+
+        <!-- Safe version of json-smart -->
+        <dependency>
+            <groupId>net.minidev</groupId>
+            <artifactId>json-smart</artifactId>
+            <version>2.5.1</version>
         </dependency>
         <!-- helm-client for interacting with Helm charts -->
-<!--        <dependency>-->
-<!--            <groupId>com.marcnuri.helm-java</groupId>-->
-<!--            <artifactId>helm-java</artifactId>-->
-<!--            <version>0.0.10</version>-->
-<!--        </dependency>-->
-        <!-- SnakeYAML for YAML processing -->
+        <dependency>
+            <groupId>com.marcnuri.helm-java</groupId>
+            <artifactId>helm-java</artifactId>
+            <version>0.0.10</version>
+        </dependency>
+        <!-- Logback Classic SLF4J Binding -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.5.6</version>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -112,6 +159,14 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
+                </configuration>
             </plugin>
         </plugins>
     </build>
