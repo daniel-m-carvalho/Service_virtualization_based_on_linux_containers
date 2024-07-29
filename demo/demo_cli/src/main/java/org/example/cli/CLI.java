@@ -1,11 +1,14 @@
 package org.example.cli;
 
-import java.util.Arrays;
 import java.util.Map;
 import java.util.function.Function;
 
+import static org.example.controllers.kubernetes.KubernetesController.handleDeployPod;
+import static org.example.controllers.kubernetes.KubernetesController.handlePodLogs;
 import static org.example.controllers.podman.CmdController.handleDeployCmd;
+import static org.example.controllers.podman.CmdController.handleStatsCmd;
 import static org.example.controllers.podman.HttpController.handleDeployHttp;
+import static org.example.controllers.podman.HttpController.handleStatsHttp;
 
 /**
  *  A class that handles command line interface (CLI) commands. This class contains functions
@@ -15,21 +18,36 @@ import static org.example.controllers.podman.HttpController.handleDeployHttp;
 public class CLI {
 
     /**
-     * A map that associates a boolean value with a function to handle pod commands.
-     * If the boolean is true, it handles HTTP commands; otherwise, it handles CMD commands.
+     * A map that associates a command string with a function to handle the command.
      */
-    private static final Map<Boolean, Function<String [], Void>> POD_FUNC_MAP = Map.of(
-            true, args -> { handleDeployHttp(args); return null; },
-            false, args -> { handleDeployCmd(args); return null; }
+    private static final Map<String, Function<String [], Void>> HTTP_POD_FUNC_MAP = Map.of(
+        "deploy", args -> { handleDeployHttp(args); return null; },
+        "stats", args -> { handleStatsHttp(args); return null;}
+    );
+
+    /**
+     * A map that associates a command string with a function to handle the command.
+     */
+    private static final Map<String, Function<String [], Void>> CMD_POD_FUNC_MAP = Map.of(
+        "deploy", args -> { handleDeployCmd(args); return null; },
+        "stats", args -> { handleStatsCmd(args); return null;}
+    );
+
+    /**
+     * A map that associates a command string with a function to handle the command.
+     */
+    private static final Map<String, Function<String[], Void>> KUBE_FUNC_MAP = Map.of(
+        "deploy", args -> { handleDeployPod(args); return null; },
+        "logs", args -> { handlePodLogs(args); return null; }
     );
 
     /**
      * A map that associates a command string with a function to handle the command.
      */
     private static final Map<String, Function<String[], Void>> COMMANDS_MAP = Map.of(
-            CommandsList.HELP, args -> { CLI.printHelp(); return null; },
-            CommandsList.POD, args -> { CLI.handlePodCommand(args); return null; },
-            CommandsList.KUBERNETES, args -> { CLI.handleKubernetesCommand(args); return null; }
+        CommandsList.HELP, args -> { CLI.printHelp(); return null; },
+        CommandsList.POD, args -> { CLI.handlePodCommand(args); return null; },
+        CommandsList.KUBERNETES, args -> { CLI.handleKubernetesCommand(args); return null; }
     );
 
     /**
@@ -39,11 +57,11 @@ public class CLI {
      */
     public static void run(String... args) {
         COMMANDS_MAP.getOrDefault(
-                args.length > 0 ? args[0] : CommandsList.HELP,
-                arg -> {
-                    printHelp();
-                    return null;
-                }
+            args.length > 0 ? args[0] : CommandsList.HELP,
+            arg -> {
+                printHelp();
+                return null;
+            }
         ).apply(args);
     }
 
@@ -55,12 +73,13 @@ public class CLI {
      */
     private static void handlePodCommand(String[] args) {
         boolean isHttpCommand = "http".equals(args[1]);
-        int expectedArgsLength = isHttpCommand ? 5 : 4;
 
-        if (args.length < expectedArgsLength) {
-            return;
+        if (isHttpCommand) {
+            HTTP_POD_FUNC_MAP.get(args[2]).apply(args);
+        } else {
+            CMD_POD_FUNC_MAP.get(args[1]).apply(args);
         }
-        POD_FUNC_MAP.get(isHttpCommand).apply(args);
+
     }
 
     /**
@@ -69,7 +88,7 @@ public class CLI {
      * @param args The command line arguments passed to the Kubernetes command.
      */
     private static void handleKubernetesCommand(String[] args) {
-        System.out.println("TODO: Implement Kubernetes" + Arrays.toString(args));
+       KUBE_FUNC_MAP.get(args[1]).apply(args);
     }
 
     /**
@@ -78,9 +97,12 @@ public class CLI {
      */
     private static void printHelp() {
         System.out.println("Usage:");
-        System.out.println(CommandsList.POD + " " + CommandsList.POD_CMD_FORMAT);
-        System.out.println(CommandsList.POD + " " + CommandsList.POD_HTTP_FORMAT);
-        System.out.println(CommandsList.KUBERNETES + " " + "TODO: Implement Kubernetes");
+        System.out.println(CommandsList.POD + " " + CommandsList.POD_CMD_DEPLOY_FORMAT);
+        System.out.println(CommandsList.POD + " " + CommandsList.POD_CMD_STATS_FORMAT);
+        System.out.println(CommandsList.POD + " " + CommandsList.POD_HTTP_DEPLOY_FORMAT);
+        System.out.println(CommandsList.POD + " " + CommandsList.POD_HTTP_STATS_FORMAT);
+        System.out.println(CommandsList.KUBERNETES + " " + CommandsList.KUBERNETES_DEPLOY_POD_FORMAT);
+        System.out.println(CommandsList.KUBERNETES + " " + CommandsList.KUBERNETES_POD_LOGS_FORMAT);
         System.out.println(CommandsList.HELP + "- Print this help message");
     }
 }

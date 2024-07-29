@@ -86,7 +86,7 @@ public class Templates {
         metadata.put("name", name + "-deployment");
 
         Map<String, Object> selectorMatchLabels = new HashMap<>();
-        selectorMatchLabels.put("app", name + "-app");
+        selectorMatchLabels.put("app", name);
 
         Map<String, Object> selector = new HashMap<>();
         selector.put("matchLabels", selectorMatchLabels);
@@ -136,7 +136,7 @@ public class Templates {
         if (selectorLabels != null && !selectorLabels.isEmpty()) {
             selector.putAll(selectorLabels);
         } else {
-            selector.put("app", name + "-app");
+            selector.put("app", name);
         }
 
         List<Map<String, Object>> ports = new ArrayList<>(portConfigurations);

@@ -35,7 +35,7 @@ public class HttpExec {
      * @return The response body as a String.
      * @throws Exception if the request fails or an unsupported method is specified.
      */
-    public static String executeRequest(String method, String endpoint, String payload, Map<String, String> queryParams, String authInfo) throws Exception {
+    public static Map<String, Object> executeRequest(String method, String endpoint, String payload, Map<String, String> queryParams, String authInfo) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
 
         // Construct the query string from queryParams
@@ -55,25 +55,25 @@ public class HttpExec {
         }
 
         HttpRequest request = clientBuilderMap.getOrDefault(
-            method,
-            (builder, body) -> {
-                throw new Exception("Unsupported method: " + method);
-            }
+                method,
+                (builder, body) -> {
+                    throw new Exception("Unsupported method: " + method);
+                }
         ).apply(
-            requestBuilder,
-            BodyPublishers.ofString(payload)
+                requestBuilder,
+                BodyPublishers.ofString(payload)
         ).build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         ExecIfElse.execIf(
-                isError(response.statusCode()),
-                () -> {
-                    throw new Exception("Request failed with status code: " + response.statusCode());
-                }
+            isError(response.statusCode()),
+            () -> {
+                throw new Exception("Request failed with status code: " + response.statusCode() + "\n" + response.body());
+            }
         );
 
-        return response.body();
+        return Map.of("status", response.statusCode(), "body", response.body());
     }
 
     /**

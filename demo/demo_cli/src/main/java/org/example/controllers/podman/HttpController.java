@@ -1,7 +1,5 @@
 package org.example.controllers.podman;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.snakeyaml.engine.v2.api.lowlevel.Parse;
 import pt.isel.leic.svlc.pod.http.PodmanHttp;
 import pt.isel.leic.svlc.pod.cmd.PodmanCmd;
 import pt.isel.leic.svlc.util.results.Failure;
@@ -20,10 +18,7 @@ public class HttpController {
         Map<String, Object> podPayload = Map.of(
             "name", args[3],
             "portmappings", List.of(
-                Map.of(
-                    "container_port", podmanHttp.getPorts()[1],
-                    "host_port", podmanHttp.getPorts()[0]
-                )
+                podmanHttp.getPortsConf()
             )
         );
         try {
@@ -42,16 +37,16 @@ public class HttpController {
                     ));
                     return podmanHttp.createContainer();
                 }
-            )).print()
-            .then(() -> {
+            )).print().then(() -> {
                 podmanHttp.reset();
                 return exec(podmanHttp::startPod);
-            }).print()
-            .complete();
+            }).print();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }finally {
-            if (service != null) service.right().value().interrupt();
+            if (service != null) {
+                service.right().value().interrupt();
+            }
         }
     }
 
@@ -60,8 +55,9 @@ public class HttpController {
         podmanHttp.setPodName(args[3]);
         Result<Failure, Success<Thread>> service = null;
         try {
-            service = exec(() -> PodmanCmd.startPodmanService("localhost:8080")).print();
-            exec(podmanHttp::getPodStatistics).print().complete();
+            service = exec(() -> PodmanCmd.startPodmanService(podmanHttp.getServiceIpPort())).print();
+            podmanHttp.setPayload(Map.of());
+            exec(podmanHttp::inspectPod).print().complete();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }finally {

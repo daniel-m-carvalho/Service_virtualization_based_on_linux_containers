@@ -1,6 +1,5 @@
 package org.example;
 
-import static java.lang.System.exit;
 import static org.example.cli.CLI.run;
 
 public class Main {

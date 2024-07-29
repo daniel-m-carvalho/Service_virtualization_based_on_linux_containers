@@ -1,72 +1,77 @@
 package org.example.controllers.kubernetes;
 
 import pt.isel.leic.svlc.kubernetes.Kubernetes;
-import pt.isel.leic.svlc.util.auth.Auth;
-import pt.isel.leic.svlc.yaml.Templates;
-import pt.isel.leic.svlc.yaml.YamlConverter;
+import pt.isel.leic.svlc.kubernetes.resources.Pod;
+import pt.isel.leic.svlc.kubernetes.resources.Secret;
+import pt.isel.leic.svlc.kubernetes.resources.Service;
+import pt.isel.leic.svlc.util.executers.HttpExec;
+import pt.isel.leic.svlc.util.kubernetes.configurations.CreateConfig;
+import pt.isel.leic.svlc.util.kubernetes.configurations.InfoConfig;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static pt.isel.leic.svlc.util.auth.Auth.registryKey;
 import static pt.isel.leic.svlc.util.executers.CommonExec.exec;
 
 public class KubernetesController {
     public static void handleDeployPod(String[] args) {
-        Kubernetes kubernetes = new Kubernetes();
-        // Create the secret
         String secretName = "my-secret";
-        Map<String, String> data = new HashMap<>();
-        data.put(".dockerconfigjson", Auth.registryKey());
-        Map<String, Object> secret = Templates.createSecretTemplate(
-                secretName,
-                data,
-                new HashMap<>(), // Assuming no labels for simplicity
-                "kubernetes.io/dockerconfigjson"
-        );
-
+        Map<String, byte[]> data = new HashMap<>();
+        byte[] registryKey = registryKey();
+        data.put(".dockerconfigjson", registryKey);
+        Secret secret = new Secret(secretName, "kubernetes.io/dockerconfigjson", data);
         // Create the pod, assuming imagePullSecrets is required
-        List<Map<String, String>> imagePullSecrets = List.of(Map.of("name", secretName));
-        String imagePullPolicy = "on-failure";
-        Map<String, Object> pod = Templates.createPodTemplate(
-                args[2],
-                List.of(args[2] + "-container"),
-                List.of(args[3]),
-                imagePullPolicy,
-                imagePullSecrets
+        List<String> imagePullSecrets = List.of(secretName);
+        Integer[] ports = Arrays.stream(args[6].split(":")).map(Integer::parseInt).toArray(Integer[]::new);
+        String imagePullPolicy = "IfNotPresent";
+       // String imageName = args[4].split("/")[2];
+        String externalIP = args[5];
+        Pod pod = new Pod(
+            args[3],
+            args[4],
+            Arrays.copyOfRange(ports, 1, ports.length),
+            imagePullPolicy,
+            imagePullSecrets
         );
-
         //create service for the pod exposing the ports
-        String[] ports = args[4].split(":");
-        String type = "NodePort";
-        Map<String, Object> portConfig = new HashMap<>();
-        Map<String,String> portsMap = Map.of(
-                "protocol", "TCP",
-                "port", ports[0],
-                "targetPort", ports[1],
-                "nodePort", ports[2]
-        );
-        portConfig.put("ports", portsMap);
-        Map<String, Object> service = Templates.createServiceTemplate(
-                args[2],
-                type,
-                List.of(portConfig),
-                Map.of(),
-                Map.of()
-        );
-
+        // Example call with ClusterIP, adjust as necessary for your use case
+        Service service = getService(args[2], externalIP ,ports);
         try {
-            String yaml = YamlConverter.serializeToYaml(List.of(secret, pod, service));
-            exec( () -> kubernetes.deployFromYaml(yaml)).print().complete();
+            Kubernetes kubernetes = new Kubernetes(null, args[2]);
+            exec( () -> kubernetes.createSecret(secret, new CreateConfig())).print().complete();
+            exec( () -> kubernetes.createPod(pod, new CreateConfig())).print().complete();
+            exec( () -> kubernetes.createService(service, new CreateConfig())).print().complete();
+            Thread.sleep(2000);
+            Map<String,Object> res = HttpExec.executeRequest("GET", "http://" + externalIP + ":" + ports[0] + "/goodbye", "", null, null);
+            System.out.println(res);
+            //Publisher.publish(imageName);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
     }
 
+    private static Service getService(String podName, String ip ,Integer[] ports) {
+        Map<String, Object> portConfig = new HashMap<>();
+        portConfig.put("name", "http");
+        portConfig.put("protocol", "TCP");
+        portConfig.put("port", ports[0]);
+        portConfig.put("targetPort", ports[1]);
+
+        return new Service(
+                podName,
+                "loadBalancer",
+                List.of(portConfig),
+                List.of(ip)
+        );
+    }
+
     public static void handlePodLogs(String[] args) {
-        Kubernetes kubernetes = new Kubernetes();
         try {
-            exec(()-> kubernetes.getPodLogs(args[2])).print().complete();
+            Kubernetes kubernetes = new Kubernetes(null, args[2]);
+            exec(()-> kubernetes.getPodLogs(new InfoConfig(args[3]))).print().complete();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }

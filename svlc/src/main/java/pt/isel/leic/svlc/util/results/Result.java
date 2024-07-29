@@ -97,9 +97,15 @@ public record Result<L, R>(L left, R right) {
      * If the operation failed, it does nothing.
      * @return The Result object.
      */
-    public Result<L, R> print() {
-        if (success()) System.out.println(right);
-        return this;
+    public Result<L, R> print() throws Exception {
+        return execIfElse(
+            success(),
+            () -> {
+                System.out.println(right);
+                return Right(right);
+            },
+                () -> this
+        );
     }
 
     /**

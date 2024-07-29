@@ -23,7 +23,7 @@ public class CmdExec {
      * @return The output of the command.
      * @throws Exception If the command fails.
      */
-    public static CommandResult executeCommand(String command, String successMessage, boolean wait) throws Exception {
+    public static CommandResult executeCommand(String [] command, String successMessage, boolean wait) throws Exception {
         ProcessBuilder processBuilder = new ProcessBuilder(command);
         if (wait){
             return fromOutput(synchronousExec(processBuilder, successMessage));
@@ -37,9 +37,7 @@ public class CmdExec {
             try {
                 Process process = processBuilder.start();
                 process.waitFor();
-            } catch (Exception e) {
-                System.err.println("[ERROR]: " + e.getMessage());
-            }
+            } catch (Exception ignored) {}
         });
         thread.start();
         return thread;
@@ -65,7 +63,7 @@ public class CmdExec {
             throw new Exception("Command failed with exit code " + exitCode + "\n" + error);
         }
 
-        if (successMessage != null && output.isEmpty()) return successMessage;
+        if (!successMessage.isEmpty()) return successMessage;
         else return output;
     }
 }

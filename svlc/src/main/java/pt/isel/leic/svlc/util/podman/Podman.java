@@ -6,13 +6,13 @@ package pt.isel.leic.svlc.util.podman;
  * The operations include creating, starting, stopping, and managing pods and containers.
  * As well as pulling and deleting images.
  */
-public interface Podman {
-    String createPod() throws Exception;
-    String startPod() throws Exception;
-    String stopPod() throws Exception;
-    String prunePods() throws Exception;
-    String getPodStatistics() throws Exception;
-    String createContainer() throws Exception;
-    String pullImage() throws Exception;
-    String deleteImage() throws Exception;
+public interface Podman<T> {
+    T createPod() throws Exception;
+    T startPod() throws Exception;
+    T stopPod() throws Exception;
+    T deletePod() throws Exception;
+    T inspectPod() throws Exception;
+    T deleteContainer(String name) throws Exception;
+    T pullImage() throws Exception;
+    T deleteImage() throws Exception;
 }

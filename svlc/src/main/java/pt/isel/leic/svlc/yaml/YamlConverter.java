@@ -1,6 +1,6 @@
 package pt.isel.leic.svlc.yaml;
 
-import io.fabric8.kubernetes.client.utils.Serialization;
+import io.kubernetes.client.util.Yaml;
 
 import java.util.List;
 import java.util.Map;
@@ -18,7 +18,7 @@ public class YamlConverter {
      * @return The Yaml string representation of the map.
      */
     public static String toYaml(Map<String, Object> data) {
-        return Serialization.asYaml(data);
+        return Yaml.dump(data);
     }
 
     /**
