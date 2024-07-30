@@ -9,6 +9,7 @@
   * [PodmanHttp Class](#podmanhttp-class)
   * [Endpoints](#endpoints)
   * [Authentication](#authentication)
+* [Configuration Files](#configuration-files)
 * [Result Handling](#result-handling)
 * [Environment Variables](#environment-variables)
 * [Limitations and requirements](#limitations-and-requirements)
@@ -26,15 +27,15 @@ Both implement the `Podman` interface, which defines the operations that can be 
 This interface is designed to be extensible, allowing for additional implementations to be added in the future.
 
 ```java
-public interface Podman {
-  String createPod() throws Exception;
-  String startPod() throws Exception;
-  String stopPod() throws Exception;
-  String prunePods() throws Exception;
-  String getPodStatistics() throws Exception;
-  String createContainer() throws Exception;
-  String pullImage() throws Exception;
-  String deleteImage() throws Exception;
+public interface Podman<T> {
+  T createPod() throws Exception;
+  T startPod() throws Exception;
+  T stopPod() throws Exception;
+  T deletePod() throws Exception;
+  T getPodStatistics() throws Exception;
+  T deleteContainer(String name) throws Exception;
+  T pullImage() throws Exception;
+  T deleteImage() throws Exception;
 }
 ```
 
@@ -42,7 +43,7 @@ public interface Podman {
 
 ### PodmanCmd Class
 
-The **[PodmanCmd](../src/main/java/pt/isel/leic/svlc/pod/cmd/PodmanCmd.java)** class is responsible for executing Podman commands via the CLI. 
+The **[PodmanCmd](../src/main/java/pt/isel/leic/svlc/podman/cmd/PodmanCmd.java)** class is responsible for executing Podman commands via the CLI. 
 It utilizes the `CmdExec` utility class to run these commands in a process, capturing the output or errors. 
 This class supports a variety of operations:
 
@@ -74,7 +75,7 @@ public static String deployInPodCMD(String podName, String image) {
 
 ### PodmanHttp Class
 
-The [PodmanHttp](../src/main/java/pt/isel/leic/svlc/pod/http/PodmanHttp.java) class interacts with Podman's REST API to manage containers and pods. 
+The [PodmanHttp](../src/main/java/pt/isel/leic/svlc/podman/http/PodmanHttp.java) class interacts with Podman's REST API to manage containers and pods. 
 It uses the `HttpExec` utility class to send HTTP requests to the Podman server. 
 This class supports similar operations as `PodmanCmd` but through HTTP requests:
 
@@ -127,9 +128,15 @@ private static String encode(String format){
 }
 ```
 
+## Configuration Files
+The `PodmanCmd` and `PodmanHttp` classes use the [`PodmanParser`](../src/main/java/pt/isel/leic/svlc/podman/PodmanParser.java) class to 
+serialize .xml files into a "Pod" object. This class uses the `JAXB` library to parse the XML files and create the corresponding objects.
+
+See [`example`](../../demo/demo_cli/ConfigFiles/hello-config.xml) .
+
 ## Result Handling
 
-Both `PodmanCmd` and `PodmanHttp` classes utilize the `Result` class for operation outcomes, 
+Both `PodmanCmd` and `PodmanHttp` classes utilize indirectly the [`Result`](../src/main/java/pt/isel/leic/svlc/util/results/Result.java) class for operation outcomes, 
 which is a generic container for either a ***success*** or an ***error*** result.
 
 For more detailed information about results handling, please refer to the [Result Handling](./results.md) documentation.

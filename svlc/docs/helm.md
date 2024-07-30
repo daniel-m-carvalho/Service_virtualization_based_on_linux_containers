@@ -13,7 +13,7 @@
     * [Util](#util)
   * [Helm Chart](#helm-chart)
   * [Helm Values](#helm-values)
-  * [Helm Template](#helm-template)
+  * [Helm Templates](#helm-templates)
 * [Implementation Details](#implementation-details)
   * [Yaml Conversion](#yaml-conversion)
   * [Yaml File Generation](#yaml-file-generation)
@@ -98,19 +98,87 @@ The [`HelmManagerUtil`](../src/main/java/pt/isel/leic/svlc/util/helm/HelmManager
 for the `HelmManager` class, to configure the helm commands before being executed.
 
 ### Helm Chart
-The [`Charts`](../src/main/java/pt/isel/leic/svlc/helm/yaml/Charts.java) class focuses on managing Helm charts, including 
+The [`Charts`](../src/main/java/pt/isel/leic/svlc/yaml/Charts.java) class focuses on managing Helm charts, including 
 their creation, modification, and packaging. Charts are the core components in 
 Helm that represent a set of pre-configured Kubernetes resources.
 
+```java
+public class Charts {
+
+    private final String apiVersion = "v2"; // The API version of the Helm chart.
+    private String name;    // The name of the Helm chart.
+    private String description; // A short description of the chart.
+    private String version; // The version of the chart.
+    private String appVersion;  // The version of the app this chart installs.
+    private List<String> keywords;  // A list of keywords associated with the chart.
+    private Map<String, String> sources;    // The source URLs of the chart.
+    private List<String> maintainers;   // The maintainers of the chart.
+    private String home; // optional
+    private String icon; // optional
+    private List<String> dependencies; // optional
+    private String type; // optional
+    private Map<String, String> annotations; // optional
+  
+    public Charts() {}
+    
+    public Charts(
+            String name,
+            String description,
+            String version,
+            String appVersion,
+            List<String> keywords,
+            Map<String, String> sources,
+            List<String> maintainers
+    ) {
+        this.name = name;
+        this.description = description;
+        this.version = version;
+        this.appVersion = appVersion;
+        this.keywords = keywords;
+        this.sources = sources;
+        this.maintainers = maintainers;
+    }
+    
+    // Methods...
+}    
+```
+
 ### Helm Values
-The [`Values`](../src/main/java/pt/isel/leic/svlc/helm/yaml/Values.java) class deals with the customization of charts 
+The [`Values`](../src/main/java/pt/isel/leic/svlc/yaml/Values.java) class deals with the customization of charts 
 through values. These values override the default settings in a chart's `values.yaml` file, allowing for 
 flexible configuration of Kubernetes resources.
 
-### Helm Template
-The [`Templates`](../src/main/java/pt/isel/leic/svlc/helm/yaml/Templates.java) class is designed to manage Helm templates. 
+```java
+public class Values {
+    
+    private final Map<String, Object> values;   // The values of the chart.
+    
+    public Values() {
+        this.values = new HashMap<>();
+    }
+    
+    public Values(Map<String, Object> values) {
+        this.values = values;
+    }
+    
+    // Methods...
+}
+```
+
+### Helm Templates
+The [`Templates`](../src/main/java/pt/isel/leic/svlc/yaml/Templates.java) class is designed to manage Helm templates. 
 Templates are used to generate Kubernetes manifests from Helm charts, enabling the deployment of applications on Kubernetes
 clusters. 
+
+You can create some templates like:
+
+* Pod
+* Deployment
+* Service
+* ConfigMap
+* Secret
+* Persistent Volume
+* Persistent Volume Claim
 
 ## Implementation Details
 
@@ -120,13 +188,17 @@ This conversion is crucial for generating Kubernetes manifests from Java applica
 
 ```java
 public class YamlConverter {
-  public static Result<Failure, Success<String>> toYaml(Map<String, Object> data) {
-    try {
-      Yaml yaml = new Yaml();
-      return Result.Right(new Success<>(yaml.dump(data)));
-    } catch (YAMLException e) {
-      return Result.Left(new Failure(e.getMessage()));
-    }
+  public static String toYaml(Map<String, Object> data) {
+    return Yaml.dump(data);
+  }
+
+  public static String serializeToYaml(List<Map<String, Object>> resources) {
+    StringBuilder yaml = new StringBuilder();
+    resources.forEach(resource -> {
+      yaml.append(toYaml(resource));
+      yaml.append("\n---\n");
+    });
+    return yaml.toString();
   }
 }
 ```
@@ -137,24 +209,40 @@ by Helm to install or upgrade applications on Kubernetes clusters.
 
 ```java
 public class YamlCreateFile {
-  public static Result<Failure, Success<String>> createYamlFile(String filename, String content) {
-    if (!isValidFilename(filename)) {
-      return Result.Left(new Failure("Filename cannot be null or empty"));
-    }
-    filename = ensureYamlExtension(filename);
+    
+  private static boolean isInvalidFilename(String filename) {
+    return filename == null || filename.isEmpty();
+  }
 
-    String path = System.getenv("HELM_PATH");
-    if (!isHelmPathSet(path)) {
-      return Result.Left(new Failure("HELM_PATH environment variable is not set"));
-    }
+  private static String ensureYamlExtension(String filename) {
+    return filename.endsWith(".yaml") ? filename : filename + ".yaml";
+  }
+  
+  private static boolean isPathNotSet(String path) {
+    return path == null || path.isEmpty();
+  }
+  
+  public static Result<Failure, Success<String>> createYamlFile(String filename, String content, String path) {
 
-    Path filePath = Paths.get(path, filename);
     try {
+      execIf(
+              isInvalidFilename(filename),
+              () -> Left(new Failure("Filename cannot be null or empty"))
+      );
+
+      filename = ensureYamlExtension(filename);
+
+      execIf(
+              isPathNotSet(path),
+              () -> Left(new Failure("HELM_PATH environment variable is not set"))
+      );
+
+      Path filePath = Paths.get(path, filename);
       Files.createDirectories(filePath.getParent());
       Files.write(filePath, content.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
       return Result.Right(new Success<>("File created successfully: " + filePath));
-    } catch (IOException e) {
-      return Result.Left(new Failure("Failed to create or write to file: " + e.getMessage()));
+    } catch (Exception e) {
+      return Left(new Failure("Failed to create or write to file: " + e.getMessage()));
     }
   }
 }
