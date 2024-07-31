@@ -37,7 +37,7 @@ http://localhost:4321/goodbye
 ### 7 - stop Kubernetes cluster and clean up
 
 ```sh
-minikube delete -p goodbye --purge && .\isos\clean.cmd
+minikube delete -p goodbye --purge; .\isos\clean.cmd
 ```
 
 ### 7 - deploy pod in podman http on wsl2
