@@ -22,6 +22,7 @@ pt\isel\leic\svlc\util\resources\Service.class
 pt\isel\leic\svlc\util\kubernetes\Commands.class
 pt\isel\leic\svlc\util\resources\Pod.class
 pt\isel\leic\svlc\util\executers\ExecIfElse.class
+pt\isel\leic\svlc\isos\Publisher.class
 pt\isel\leic\svlc\podman\cmd\Commands.class
 pt\isel\leic\svlc\yaml\Templates.class
 pt\isel\leic\svlc\podman\PodmanParser.class

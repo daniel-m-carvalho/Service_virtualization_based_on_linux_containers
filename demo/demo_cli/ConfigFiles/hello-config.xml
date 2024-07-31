@@ -1,0 +1,20 @@
+<!-- This is a sample configuration file for the hello-world pod. -->
+<pod>
+    <name>hello-world</name>
+    <containersList>
+        <container>
+            <name>hello-container</name>
+            <image>docker.io/danielmc03/hello</image>
+            <portConfigList>
+                <portConfig>
+                    <name>http</name>
+                    <protocol>TCP</protocol>
+                    <hostPort>1234</hostPort>
+                    <targetPort>8080</targetPort>
+                </portConfig>
+            </portConfigList>
+        </container>
+    </containersList>
+    <imagePullPolicy><!-- IfNotPresent, Always, Never (required for Kubernetes) --></imagePullPolicy>
+    <imagePullSecret><!-- ex: my-secret (required for Kubernetes) --></imagePullSecret>
+</pod>

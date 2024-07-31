@@ -14,7 +14,7 @@
     <!-- Project Identification -->
     <groupId>pt.isel.leic.svlc</groupId>
     <artifactId>mechanisms</artifactId>
-    <version>2.0.7</version>
+    <version>2.1.0</version>
 
     <name>SVLC Library</name>
     <description>A library for integrating Podman and kubernetes in Java and Kotlin applications.</description>
@@ -57,6 +57,12 @@
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
             <version>4.0.2</version>
+        </dependency>
+        <!-- Jakarta runtime for XML serialization -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>4.0.5</version>
         </dependency>
         <!-- OkHttp for making HTTP requests -->
         <dependency>

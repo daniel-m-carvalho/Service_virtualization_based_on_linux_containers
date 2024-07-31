@@ -1,0 +1,104 @@
+<!-- This is an example of a configuration file for a kubernetes cluster -->
+<cluster>
+    <name>goodbye</name>
+    <namespace>default</namespace>
+    <portForward>4321</portForward>
+    <secret>
+        <name>my-secret</name>
+        <type>kubernetes.io/dockerconfigjson</type>
+        <labels>
+            <entry>
+                <key>app</key>
+                <value>goodbye</value>
+            </entry>
+        </labels>
+    </secret>
+    <pod>
+        <name>goodbye-world</name>
+        <containersList>
+            <container>
+                <name>goodbye-container</name>
+                <image>docker.io/danielmc03/goodbye</image>
+                <portConfigList>
+                    <portConfig>
+                        <name>http</name>
+                        <protocol>TCP</protocol>
+                        <hostPort>4321</hostPort>
+                        <targetPort>8080</targetPort>
+                    </portConfig>
+                </portConfigList>
+            </container>
+        </containersList>
+        <imagePullPolicy>IfNotPresent</imagePullPolicy>
+        <imagePullSecret>my-secret</imagePullSecret>
+    </pod>
+    <service>
+        <name>goodbye-service</name>
+        <type>LoadBalancer</type>
+        <portConfigList>
+            <portConfig>
+                <name>http</name>
+                <protocol>TCP</protocol>
+                <hostPort>4321</hostPort>
+                <targetPort>8080</targetPort>
+                <nodePort><!-- ex: 30000 (only if type is NodePort) --></nodePort>
+            </portConfig>
+        </portConfigList>
+        <externalIP>104.197.41.11</externalIP>
+        <labels>
+            <entry>
+                <key>run</key>
+                <value>goodbye-world</value>
+            </entry>
+        </labels>
+        <selector>
+            <entry>
+                <key>run</key>
+                <value>goodbye-world</value>
+            </entry>
+        </selector>
+    </service>
+    <deployment>
+        <!-- example of a deployment with 3 replicas -->
+        <!-- <name>goodbye-deployment</name> -->
+        <!-- <replicas>3</replicas> -->
+        <!-- <containersList> -->
+        <!--     <container> -->
+        <!--         <name>goodbye-container</name> -->
+        <!--         <image>docker.io/danielmc03/goodbye</image> -->
+        <!--         <portConfigList>-->
+        <!--             <portConfig>-->
+        <!--                 <name>http</name>-->
+        <!--                 <protocol>TCP</protocol>-->
+        <!--                 <hostPort>4321</hostPort>-->
+        <!--                 <targetPort>8080</targetPort>-->
+        <!--             </portConfig>-->
+        <!--         </portConfigList>-->
+        <!--     </container> -->
+        <!-- </containersList> -->
+        <!-- <imagePullPolicy>IfNotPresent</ImagePullPolicy> -->
+        <!-- <imagePullSecret>my-secret</ImagePullSecret> -->
+    </deployment>
+    <configMap>
+        <!-- <name>goodbye-config</name> -->
+        <!-- <data> -->
+        <!--     <entry> -->
+        <!--         <key>key1</key> -->
+        <!--         <value>value1</value> -->
+        <!--     </entry> -->
+        <!-- </data> -->
+    </configMap>
+    <persistentVolume>
+        <!-- <name>goodbye-pv</name> -->
+        <!-- <capacity>1Gi</capacity> -->
+        <!-- <accessModes>ReadWriteOnce</accessModes> -->
+        <!-- <storageClass>standard</storageClass> -->
+        <!-- <hostPath>/mnt/data</hostPath> -->
+    </persistentVolume>
+    <persistentVolumeClaim>
+        <!-- <name>goodbye-pvc</name> -->
+        <!-- <accessModes>ReadWriteOnce</accessModes> -->
+        <!-- <storageClassName>standard</storageClassName> -->
+        <!-- <storage>1Gi</storage> -->
+    </persistentVolumeClaim>
+</cluster>
