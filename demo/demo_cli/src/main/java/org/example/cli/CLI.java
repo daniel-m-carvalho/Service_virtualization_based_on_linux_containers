@@ -6,9 +6,9 @@ import java.util.function.Function;
 import static org.example.controllers.kubernetes.KubernetesController.handleDeployPod;
 import static org.example.controllers.kubernetes.KubernetesController.handlePodLogs;
 import static org.example.controllers.podman.CmdController.handleDeployCmd;
-import static org.example.controllers.podman.CmdController.handleStatsCmd;
+import static org.example.controllers.podman.CmdController.handleInspectCmd;
 import static org.example.controllers.podman.HttpController.handleDeployHttp;
-import static org.example.controllers.podman.HttpController.handleStatsHttp;
+import static org.example.controllers.podman.HttpController.handleInspectHttp;
 
 /**
  *  A class that handles command line interface (CLI) commands. This class contains functions
@@ -22,7 +22,7 @@ public class CLI {
      */
     private static final Map<String, Function<String [], Void>> HTTP_POD_FUNC_MAP = Map.of(
         "deploy", args -> { handleDeployHttp(args); return null; },
-        "stats", args -> { handleStatsHttp(args); return null;}
+        "stats", args -> { handleInspectHttp(args); return null;}
     );
 
     /**
@@ -30,7 +30,7 @@ public class CLI {
      */
     private static final Map<String, Function<String [], Void>> CMD_POD_FUNC_MAP = Map.of(
         "deploy", args -> { handleDeployCmd(args); return null; },
-        "stats", args -> { handleStatsCmd(args); return null;}
+        "stats", args -> { handleInspectCmd(args); return null;}
     );
 
     /**

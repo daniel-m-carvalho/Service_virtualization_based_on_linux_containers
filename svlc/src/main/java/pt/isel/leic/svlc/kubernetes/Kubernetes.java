@@ -40,7 +40,7 @@ public class Kubernetes {
     public Kubernetes(String namespace, String clusterName) throws Exception {
         ApiClient client = setClient(clusterName, false);
         Configuration.setDefaultApiClient(client);
-        this.namespace = checkAndSetNamespace(namespace);
+        this.namespace = namespace;
     }
 
     /**
@@ -51,9 +51,15 @@ public class Kubernetes {
     public Kubernetes() throws Exception {
         ApiClient client = setClient("test", true);
         Configuration.setDefaultApiClient(client);
-        this.namespace = checkAndSetNamespace(null);
+        this.namespace = "default";
     }
 
+    /**
+     * Constructs a Kubernetes instance with the specified master URL and namespace.
+     * @param clusterName The name of the cluster to use.
+     * @param debug Indicates if the client should be in debug mode.
+     * @throws Exception if the Kubernetes client cannot be created.
+     */
     private ApiClient setClient(String clusterName, boolean debug) throws Exception {
         String path = System.getProperty("user.home") + "/.kube/config";
         // The Kubernetes client to interact with the Kubernetes cluster.
@@ -65,14 +71,8 @@ public class Kubernetes {
     }
 
     /**
-     * Checks if the namespace is null and sets it to "default" if it is.
-     * @param namespace The namespace to check.
-     * @return The namespace to use.
+     * A map containing the kinds of Kubernetes resources and their respective creation methods.
      */
-    private String checkAndSetNamespace(String namespace) {
-        return namespace != null ? namespace : "default";
-    }
-
     private final Map<String, KubeResource> KINDS = Map.of(
         "Pod", (pod, config) -> createPod((V1Pod) pod, config),
         "Service", (service, config) -> createService((V1Service) service, config),

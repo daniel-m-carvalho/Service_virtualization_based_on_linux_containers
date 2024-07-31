@@ -2,10 +2,7 @@ package pt.isel.leic.svlc.util.resources;
 
 import io.kubernetes.client.openapi.models.V1ConfigMap;
 import io.kubernetes.client.openapi.models.V1ObjectMeta;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
 
 import java.util.Map;
 
@@ -19,7 +16,8 @@ public class ConfigMap {
     @XmlElement(name = "name")
     private String name;
 
-    @XmlElement(name = "data")
+    @XmlElementWrapper(name = "data")
+    @XmlElement(name = "entry")
     private Map<String, String> data;
 
     public ConfigMap() {
@@ -51,5 +49,13 @@ public class ConfigMap {
     public V1ConfigMap toV1ConfigMap() {
         return new V1ConfigMap().apiVersion("v1").kind("ConfigMap")
             .metadata(new V1ObjectMeta().name(name)).data(data);
+    }
+
+    @Override
+    public String toString() {
+        return "ConfigMap{\n" +
+            "name='" + name + "',\n" +
+            "data=" + data + '\n' +
+            '}';
     }
 }

@@ -8,6 +8,8 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
+import static pt.isel.leic.svlc.util.executers.ExecIfElse.execIfElse;
+
 @XmlRootElement(name = "portConfig")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class PortConfig {
@@ -85,16 +87,26 @@ public class PortConfig {
      * @return the V1ServicePort
      */
     public V1ServicePort toV1ServicePort() {
-        return new V1ServicePort().name(name).targetPort(new IntOrString (targetPort))
-                .port(hostPort).nodePort(nodePort).protocol(protocol);
+        return new V1ServicePort().name(name).port(targetPort).targetPort(new IntOrString(targetPort))
+            .nodePort(nodePort).protocol(protocol);
     }
-
     /**
      * Converts this PortConfig to a V1ContainerPort.
      * @return the V1ContainerPort
      */
     public V1ContainerPort toV1ContainerPort() {
         return new V1ContainerPort().name(name).containerPort(targetPort).hostPort(hostPort).protocol(protocol);
+    }
+
+    @Override
+    public String toString() {
+        return "PortConfig {\n" +
+            "name='" + name + "',\n" +
+            "hostPort=" + hostPort + ",\n" +
+            "targetPort=" + targetPort + ",\n" +
+            "nodePort=" + nodePort + ",\n" +
+            "protocol='" + protocol + "'\n" +
+            '}';
     }
 
 }

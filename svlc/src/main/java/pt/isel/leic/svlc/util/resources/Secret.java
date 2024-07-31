@@ -2,10 +2,7 @@ package pt.isel.leic.svlc.util.resources;
 
 import io.kubernetes.client.openapi.models.V1ObjectMeta;
 import io.kubernetes.client.openapi.models.V1Secret;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
 
 import java.util.Map;
 
@@ -22,7 +19,8 @@ public class Secret {
     @XmlElement(name = "type")
     private String type;
 
-    @XmlElement(name = "labels")
+    @XmlElementWrapper(name = "labels")
+    @XmlElement(name = "entry")
     private Map<String, String> labels;
 
     private Map<String, byte []> data;
@@ -70,8 +68,22 @@ public class Secret {
         this.data = data;
     }
 
+    /**
+     * Converts this object to a V1Secret object.
+     * @return the V1Secret object.
+     */
     public V1Secret toV1Secret() {
         return new V1Secret().apiVersion("v1").kind("Secret").metadata(new V1ObjectMeta()
             .name(name).labels(labels)).data(data).type(type);
+    }
+
+    @Override
+    public String toString() {
+        return "Secret {\n" +
+            "name='" + name + "',\n" +
+            "type='" + type + "',\n" +
+            "labels=" + labels + ",\n" +
+            "data=" + data + '\n' +
+            '}';
     }
 }

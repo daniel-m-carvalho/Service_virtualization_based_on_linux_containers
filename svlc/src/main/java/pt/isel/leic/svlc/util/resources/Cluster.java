@@ -15,6 +15,9 @@ public class Cluster {
     @XmlElement(name = "namespace")
     private String namespace;
 
+    @XmlElement(name = "portForward")
+    private Integer portForward;
+
     @XmlElement(name = "secret")
     private Secret secret;
 
@@ -40,10 +43,11 @@ public class Cluster {
         super();
     }
 
-    public Cluster(String name, String namespace, Secret secret, Pod pod, Service service, Deployment deployment, ConfigMap configMap, PersistentVolume persistentVolume, PersistentVolumeClaim persistentVolumeClaim) {
+    public Cluster(String name, String namespace, Integer portForward, Secret secret, Pod pod, Service service, Deployment deployment, ConfigMap configMap, PersistentVolume persistentVolume, PersistentVolumeClaim persistentVolumeClaim) {
         super();
         this.setName(name);
         this.setNamespace(namespace);
+        this.setPortForward(portForward);
         this.setSecret(secret);
         this.setPod(pod);
         this.setService(service);
@@ -67,6 +71,14 @@ public class Cluster {
 
     public void setNamespace(String namespace) {
         this.namespace = namespace;
+    }
+
+    public Integer getPortForward() {
+        return this.portForward;
+    }
+
+    public void setPortForward(Integer portForward) {
+        this.portForward = portForward;
     }
 
     public Secret getSecret() {
@@ -123,5 +135,20 @@ public class Cluster {
 
     public void setPersistentVolumeClaim(PersistentVolumeClaim persistentVolumeClaim) {
         this.persistentVolumeClaim = persistentVolumeClaim;
+    }
+
+    @Override
+    public String toString() {
+        return "Cluster {\n" +
+            "name='" + name + "',\n" +
+            "namespace='" + namespace + "',\n" +
+            "secret=" + secret + ",\n" +
+            "pod=" + pod + ",\n" +
+            "service=" + service + ",\n" +
+            "deployment=" + deployment + ",\n" +
+            "configMap=" + configMap + ",\n" +
+            "persistentVolume=" + persistentVolume + ",\n" +
+            "persistentVolumeClaim=" + persistentVolumeClaim + '\n' +
+            '}';
     }
 }

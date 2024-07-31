@@ -1,10 +1,7 @@
 package pt.isel.leic.svlc.util.resources;
 
 import io.kubernetes.client.openapi.models.*;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -22,7 +19,8 @@ public class Deployment {
     @XmlElement(name = "replicas")
     private Integer replicas;
 
-    @XmlElement(name = "containerList")
+    @XmlElementWrapper(name = "containerList")
+    @XmlElement(name = "container")
     private List<Container> containerList;
 
     @XmlElement(name = "imagePullPolicy")
@@ -95,5 +93,16 @@ public class Deployment {
             .spec(new V1PodSpec().containers(containerList.stream().map(
                 container -> container.toV1Container().imagePullPolicy(imagePullPolicy)).toList()
             ).imagePullSecrets(List.of(new V1LocalObjectReference().name(imagePullSecret))))));
+    }
+
+    @Override
+    public String toString() {
+        return "Deployment { \n" +
+            "name='" + name + "',\n" +
+            "replicas=" + replicas + ",\n" +
+            "containerList=" + containerList + ",\n" +
+            "imagePullPolicy='" + imagePullPolicy + "',\n" +
+            "imagePullSecret='" + imagePullSecret + "'\n" +
+            '}';
     }
 }

@@ -15,7 +15,8 @@ public class Pod {
     @XmlElement(name = "name")
     private String name;
 
-    @XmlElement(name = "containerList")
+    @XmlElementWrapper(name = "containersList")
+    @XmlElement(name = "container")
     private List<Container> containerList;
 
     @XmlElement(name = "imagePullPolicy")
@@ -77,5 +78,15 @@ public class Pod {
             .spec(new V1PodSpec().containers(containerList.stream().map(
                 container -> container.toV1Container().imagePullPolicy(imagePullPolicy)).toList()
             ).imagePullSecrets(List.of(new V1LocalObjectReference().name(imagePullSecret))));
+    }
+
+    @Override
+    public String toString() {
+        return "Pod { \n" +
+            "name='" + name + "',\n" +
+            "containerList=" + containerList + ",\n" +
+            "imagePullPolicy='" + imagePullPolicy + "',\n" +
+            "imagePullSecret='" + imagePullSecret + "'\n" +
+            '}';
     }
 }

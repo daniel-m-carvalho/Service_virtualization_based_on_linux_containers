@@ -96,4 +96,15 @@ public class PersistentVolume {
                     .hostPath(new V1HostPathVolumeSource().path(hostPath))
             );
     }
+
+    @Override
+    public String toString() {
+        return "PersistentVolume {\n" +
+            "name='" + name + "',\n" +
+            "capacity='" + capacity + "',\n" +
+            "storageClass='" + storageClass + "',\n" +
+            "accessModes='" + accessModes + "',\n" +
+            "hostPath='" + hostPath + "'\n" +
+            '}';
+    }
 }

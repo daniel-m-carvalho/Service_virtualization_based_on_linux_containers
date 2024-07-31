@@ -76,6 +76,10 @@ public class PersistentVolumeClaim {
         this.storage = storage;
     }
 
+    /**
+     * Converts this PersistentVolumeClaim to a V1PersistentVolumeClaim.
+     * @return the V1PersistentVolumeClaim
+     */
     public V1PersistentVolumeClaim toV1PersistentVolumeClaim() {
         return new V1PersistentVolumeClaim().metadata(new V1ObjectMeta().name(this.getName()))
             .spec(new V1PersistentVolumeClaimSpec()
@@ -85,5 +89,15 @@ public class PersistentVolumeClaim {
                     .requests(Map.of("storage", new Quantity(this.getStorage())))
                 )
             );
+    }
+
+    @Override
+    public String toString() {
+        return "PersistentVolumeClaim {\n" +
+            "name='" + name + "',\n" +
+            "storageClass='" + storageClass + "',\n" +
+            "accessModes='" + accessModes + "',\n" +
+            "storage='" + storage + "'\n" +
+            '}';
     }
 }

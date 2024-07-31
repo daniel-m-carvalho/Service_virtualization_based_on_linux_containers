@@ -1,10 +1,7 @@
 package pt.isel.leic.svlc.util.resources;
 
 import io.kubernetes.client.openapi.models.V1Container;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,7 +16,8 @@ public class Container {
     @XmlElement(name = "image")
     private String image;
 
-    @XmlElement(name = "portConfigList")
+    @XmlElementWrapper(name = "portConfigList")
+    @XmlElement(name = "portConfig")
     private List<PortConfig> portConfigList;
 
     public Container() {
@@ -65,5 +63,14 @@ public class Container {
         return new V1Container().name(name + "-container").image(image).ports(
                 portConfigList.stream().map(PortConfig::toV1ContainerPort).collect(Collectors.toList())
         );
+    }
+
+    @Override
+    public String toString() {
+        return "Container{\n" +
+            "name='" + name + "',\n" +
+            "image='" + image + "',\n" +
+            "portConfigList=" + portConfigList + "\n" +
+            '}';
     }
 }
